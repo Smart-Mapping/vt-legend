@@ -1,0 +1,116 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: center no-repeat fixed url(../image/background.jpg);
+    background-size: cover;
+}
+
+.wrapper {
+    width: 390px;
+    margin:0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+}
+
+.mapStyle {
+    margin-bottom: 10px;
+}
+
+.toggleLogo {
+    margin-bottom: 30px;
+}
+
+.frame {
+    padding: 10px;
+    background-color: #ffffff;
+}
+
+.title {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+
+    .logo {
+        height: 70px;
+        display: inline-block;
+        width: 100%; 
+
+        &.hidden {
+            display: none;
+        }
+    }
+}
+
+.map {
+    width: 50px;
+    height: 20px;
+}
+
+.basemap-highlight {
+    color: #ff0000;
+}
+
+.groupTitle {
+    background-color: rgb(255, 237, 203);
+    text-align: center;
+    margin: 8px 0;
+    padding: 1px 0; 
+    font-size: 14px;
+}
+
+.groupContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.groupContainer {
+    .left, .right {
+        width: 180px;
+    }
+}
+
+.legend-label {
+    padding-left: 10px;
+    font-size: 11px;
+}
+
+.legend-element {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    height: 30px;
+
+    img {
+        width: 50px;
+        height: 20px;
+        
+        &.border {
+            outline: 1px solid #DDDDDD;
+            outline-offset: -1px;
+        }
+    }
+}
+
+#btnDownload {
+    display: none;
+}
+
+.button {
+    font: bold 14px Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 10px;
+    border: 1px solid #333333;
+    width: 200px;
+    border-radius: 2px;
+    text-align: center;
+    margin-top: 20px;
+
+    &:hover {
+        background-color: #DDDDDD;
+    }
+}

@@ -1,0 +1,16 @@
+# compiled output
+/dist
+
+# dependencies
+/node_modules
+
+# temporary files
+/.parcel-cache
+/coverage
+
+# dev files
+/src/index-dev.html
+
+# system files
+.DS_Store
+Thumbs.db

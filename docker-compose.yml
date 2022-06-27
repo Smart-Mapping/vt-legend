@@ -1,0 +1,7 @@
+version: '3'
+services:
+  legend:
+      build: .
+      image: vt-legend
+      ports:
+        - "80:80"

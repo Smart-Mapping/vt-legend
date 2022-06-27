@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>basemap.de Legende</title>
+    <link rel="stylesheet" href="css/main.scss">
+    <script src="js/main.js" type="module"></script>
+</head>
+<body>
+    <div id="wrapper" class="wrapper">
+        <div class="mapStyle">
+            Kartenstil:
+            <select id="selStyle">
+                <option value="https://adv-smart.de/styles/public/de_style_colour_light.json">Farbe</option>
+                <option value="https://adv-smart.de/styles/public/de_style_grey.json">Grau</option>
+            </select>
+        </div>
+        <div class="toggleLogo">
+            <input id="toggleLogo" type="checkbox"> Logo einblenden
+        </div>
+        <div id="frame" class="frame">
+            <div class="title">
+                <img id="legendLogo" src="image/logo.svg" alt="basemap.de" class="logo hidden"/>
+                Zeichenerklärung
+            </div>     
+            <div id="legend">
+            </div>
+            <div id="renderMap" class="map"></div>
+        </div>
+        <a id="btnDownload" class="button">Bild herunterladen</a>
+    </div>
+</body>
+</html>
