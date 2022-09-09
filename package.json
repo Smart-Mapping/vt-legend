@@ -16,11 +16,11 @@
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.5.0",
-    "c8": "^7.11.3",
+    "@vitest/coverage-c8": "^0.23.1",
     "eslint": "^8.15.0",
-    "happy-dom": "^5.3.2",
+    "happy-dom": "^6.0.4",
     "parcel": "^2.6.0",
     "process": "^0.11.10",
-    "vitest": "^0.16.0"
+    "vitest": "^0.23.1"
   }
 }
