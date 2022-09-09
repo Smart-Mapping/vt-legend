@@ -57,7 +57,7 @@
                             "Gebaeude2D_oeffentlich"
                         ],
                         "properties": {
-                            "gebaeudefunktion": "Verwaltungsgebäude"
+                            "klasse": "Verwaltungsgebäude"
                         },
                         "coordinates": [
                             [[[0.99994, -0.000015],[0.99994, 0],[0.99997,0],[0.99997,-0.000015],[0.99994,-0.000015]]]
@@ -116,7 +116,7 @@
                             "Tagebau"
                         ],
                         "properties": {
-                            "klasse": "TagebauGrubeSteinbruch"
+                            "klasse": "Tagebau, Grube, Steinbruch"
                         }
                     }
                 ]
@@ -131,7 +131,7 @@
                             "Gebaeude2D_Treibhaus_Kontur"
                         ],
                         "properties": {
-                            "gebaeudefunktion": "Treibhaus, Gewächshaus"
+                            "klasse": "Treibhaus, Gewächshaus"
                         }
                     }
                 ]
@@ -1404,7 +1404,7 @@
                             "Bildung"
                         ],
                         "properties": {
-                            "klasse": "Bildung und Forschung"
+                            "klasse": "Gebäude für Bildung und Forschung"
                         }
                     }
                 ]
@@ -1446,7 +1446,7 @@
                             "Parkhaus"
                         ],
                         "properties": {
-                            "klasse": "Parken"
+                            "klasse": "Parkhaus"
                         }
                     }
                 ]
@@ -1460,7 +1460,7 @@
                             "Schwimmbad"
                         ],
                         "properties": {
-                            "klasse": "Bad"
+                            "klasse": "Hallenbad"
                         }
                     }
                 ]
@@ -1613,6 +1613,7 @@
             },
             {
                 "label": "Höhleneingang",
+                "zoom": 14,
                 "layers": [
                     {
                         "geomType": "Point",

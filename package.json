@@ -1,6 +1,6 @@
 {
   "name": "vt-legend",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Create legends for vector tile styles",
   "scripts": {
     "test": "vitest --coverage --run --environment happy-dom",
