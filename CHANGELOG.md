@@ -1,3 +1,7 @@
+## v1.1.0 (not released)
+### Improvements and changes
+* Replace style sources by source with dummy name
+
 ## v1.0.1 (2022-09-09)
 ### Improvements and changes
 * Update dependencies

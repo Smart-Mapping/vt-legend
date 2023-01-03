@@ -101,10 +101,14 @@ function initStyle() {
             styleJson = style;
 
             // Delete data sources to add dummy datasets later on
-            delete styleJson.sources['smarttiles_de'].url;
-            delete styleJson.sources['smarttiles_de'].attribution;
-            styleJson.sources['smarttiles_de'].type = 'geojson';
+            delete styleJson.sources;
+            styleJson.sources = {
+                "legend-source": {
+                    "type": "geojson"
+                }
+            }
             for (let i = 0; i < styleJson.layers.length; i++) {
+                styleJson.layers[i]['source'] = 'legend-source';
                 delete styleJson.layers[i]['source-layer'];
                 delete styleJson.layers[i]['maxzoom'];
 
@@ -189,7 +193,7 @@ function createLegendItem() {
             }
 
             if (isVisible) {
-                style.sources['smarttiles_de'].data = {
+                style.sources['legend-source'].data = {
                     'type': 'FeatureCollection',
                     'features': features
                 };
