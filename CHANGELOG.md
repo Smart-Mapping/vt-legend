@@ -1,4 +1,4 @@
-## v1.1.0 (not released)
+## v1.1.0 (2023-01-11)
 ### Improvements and changes
 * Replace style sources by source with dummy name
 
