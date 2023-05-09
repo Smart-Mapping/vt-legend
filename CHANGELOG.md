@@ -1,3 +1,10 @@
+## v1.2.0 (2023-05-09)
+### Improvements and changes
+* Create legend image in high resolution
+
+### Bug fixes
+* Toggle logo after legend creation complete
+
 ## v1.1.0 (2023-01-11)
 ### Improvements and changes
 * Replace style sources by source with dummy name

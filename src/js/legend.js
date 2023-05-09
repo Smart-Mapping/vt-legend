@@ -14,14 +14,25 @@ let elementCounter = 0;
 let styleJson = {};
 const standardZoom = 14;
 let renderMap = {};
+let isIdle = true;
 
 /**
  * Initialize the legend application and render map
  */
 export function initApp() {
     document.getElementById('selStyle').addEventListener('change', () => initStyle());
-    document.getElementById('toggleLogo').addEventListener('change',
-        () => document.getElementById('legendLogo').classList.toggle('hidden'));
+    document.getElementById('selDpi').addEventListener('change', () => {
+        setResolution();
+        if (isIdle) {
+            initStyle();
+        }
+    });
+    document.getElementById('toggleLogo').addEventListener('change', () => {
+        document.getElementById('legendLogo').classList.toggle('hidden');
+        if (isIdle) {
+            initStyle();
+        }
+    });        
 
     renderMap = new maplibregl.Map({
         container: 'renderMap',
@@ -86,6 +97,7 @@ export function initApp() {
  * Parse the selected style file
  */
 function initStyle() {
+    isIdle = false;
     document.getElementById('renderMap').style.display = 'block';
     document.getElementById('btnDownload').style.display = 'none';
 
@@ -151,7 +163,7 @@ function initStyle() {
 }
 
 /**
- * Parse the style file with the defined filters an create GeoJSON datasets
+ * Parse the style file with the defined filters and create GeoJSON datasets
  */
 function createLegendItem() {
     if (groupCounter < legendData.length) {
@@ -280,6 +292,7 @@ export function finishLegend() {
 
     var node = document.getElementById('frame');
 
+
     toPng(node)
         .then(function (dataUrl) {
             const selStyle = document.getElementById('selStyle');
@@ -293,6 +306,7 @@ export function finishLegend() {
         .catch(function (error) {
             console.error('oops, something went wrong!', error);
         });
+    isIdle = true;
 }
 
 /**
@@ -352,6 +366,17 @@ export function isColorWhite(color) {
  */
 export function toggleLogo() {
     document.getElementById('legendLogo').classList.toggle('hidden');
+}
+
+/**
+ * Set DPI for the legend image
+ */
+export function setResolution() {
+    const selDpi = document.getElementById('selDpi');
+    let dpi = selDpi.options[selDpi.selectedIndex].value;
+    Object.defineProperty(window, 'devicePixelRatio', {
+        get: function() {return dpi / 96}
+    });
 }
 
 /**
