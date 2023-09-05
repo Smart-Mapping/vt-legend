@@ -1204,49 +1204,7 @@
                         }
                     }
                 ]
-            },
-            {
-                "label": "Grenze Regierungsbezirk",
-                "layers": [
-                    {
-                        "geomType": "Line",
-                        "filter": [
-                            "Grenzen_Regierungsbezirk"
-                        ],
-                        "properties": {
-                            "klasse": "Grenze des Regierungsbezirks"
-                        }
-                    }
-                ]
-            },
-            {
-                "label": "Kreisgrenze",
-                "layers": [
-                    {
-                        "geomType": "Line",
-                        "filter": [
-                            "Grenzen_Kreisgrenze"
-                        ],
-                        "properties": {
-                            "klasse": "Grenze des Kreises/Region"
-                        }
-                    }
-                ]
-            },
-            {
-                "label": "Gemeindegrenze",
-                "layers": [
-                    {
-                        "geomType": "Line",
-                        "filter": [
-                            "Grenzen_Gemeindegrenze"
-                        ],
-                        "properties": {
-                            "klasse": "Grenze der Gemeinde"
-                        }
-                    }
-                ]
-            },                                    
+            },                    
             {
                 "label": "Truppenübungsplatz",
                 "layers": [
@@ -1271,20 +1229,6 @@
                         ],
                         "properties": {
                             "klasse": "Naturschutzgebiet"
-                        }
-                    }
-                ]
-            },
-            {
-                "label": "Wasserschutzgebiet",
-                "layers": [
-                    {
-                        "geomType": "Line",
-                        "filter": [
-                            "Wasserschutzgebiet"
-                        ],
-                        "properties": {
-                            "klasse": "NaturdenWasserschutzgebietkmal"
                         }
                     }
                 ]
@@ -1700,21 +1644,6 @@
                     }
                 ]
             }, 
-            {
-                "label": "Kühlturm",
-                "layers": [
-                    {
-                        "geomType": "Point",
-                        "filter": [
-                            "Kuehlturm"
-                        ],
-                        "properties": {
-                            "klasse": "Kühlturm"
-                        },
-                        "coordinates": [1, -0.0002]
-                    }
-                ]
-            },
             {
                 "label": "Windmühle",
                 "layers": [

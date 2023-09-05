@@ -3,7 +3,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 import { toPng } from 'html-to-image';
 
 if (window.URL.createObjectURL === undefined) {
-    window.URL.createObjectURL = () => {};
+    window.URL.createObjectURL = () => { };
 }
 const maplibregl = require('maplibre-gl');
 
@@ -32,7 +32,7 @@ export function initApp() {
         if (isIdle) {
             initStyle();
         }
-    });        
+    });
 
     renderMap = new maplibregl.Map({
         container: 'renderMap',
@@ -58,7 +58,7 @@ export function initApp() {
         text.innerText = legendData[groupCounter].items[elementCounter - 1].label;
         let img = document.createElement('img');
         img.src = canvas.toDataURL();
-    
+
         // Add border for defined elements
         const border = legendData[groupCounter].items[elementCounter - 1].border;
         if (border === 'true') {
@@ -67,7 +67,7 @@ export function initApp() {
             // Only add border if color of all visible fill layers is white
             const style = renderMap.getStyle();
             let isWhite = true;
-    
+
             for (let i = 0; i < style.layers.length; i++) {
                 if (style.layers[i].layout.visibility === 'visible' && style.layers[i].type === 'fill'
                     && !isColorWhite(style.layers[i].paint['fill-color'])) {
@@ -75,17 +75,17 @@ export function initApp() {
                     break;
                 }
             }
-    
+
             if (isWhite) {
                 img.className = 'border';
             }
         }
-    
+
         container.appendChild(img);
         container.appendChild(text);
-    
+
         let colClass = (elementCounter < (legendData[groupCounter].items.length / 2) + 1) ? '.left' : '.right';
-    
+
         document.querySelector('#group' + groupCounter + ' ' + colClass).appendChild(container);
         createLegendItem();
     });
@@ -115,10 +115,14 @@ function initStyle() {
             // Delete data sources to add dummy datasets later on
             delete styleJson.sources;
             styleJson.sources = {
-                "legend-source": {
-                    "type": "geojson"
+                'legend-source': {
+                    'type': 'geojson',
+                    'data': {
+                        'type': 'FeatureCollection',
+                        'features': []
+                    }
                 }
-            }
+            };
             for (let i = 0; i < styleJson.layers.length; i++) {
                 styleJson.layers[i]['source'] = 'legend-source';
                 delete styleJson.layers[i]['source-layer'];
@@ -140,7 +144,7 @@ function initStyle() {
                     delete styleJson.layers[i].layout['text-variable-anchor'];
                 }
 
-                
+
 
                 // No filter defined -> set layer id as filter 'klasse'
                 if (styleJson.layers[i].filter === undefined) {
@@ -174,42 +178,50 @@ function createLegendItem() {
         }
 
         if (elementCounter < legendData[groupCounter].items.length) {
-            let style = JSON.parse(JSON.stringify(styleJson));
-            let features = [];
-            let filterRegExp = '';
+            let style = styleJson;
+
+            // Variable to check if at least one layer is visible
+            let isVisible = false;
+
+            for (let j = 0; j < style.layers.length; j++) {
+                style.layers[j].layout.visibility = 'none';
+            }
 
             for (let i = 0; i < legendData[groupCounter].items[elementCounter].layers.length; i++) {
+                let features = [];
+                let filterRegExp = '';
+
                 // Create GeoJSON dataset
                 const feature = createGeoJsonFeature(legendData[groupCounter].items[elementCounter].layers[i]);
                 features.push(feature);
 
                 // Add filter strings to RegExp
                 filterRegExp += legendData[groupCounter].items[elementCounter].layers[i].filter.join('|');
-                if (i < legendData[groupCounter].items[elementCounter].layers.length - 1) {
-                    filterRegExp += '|';
-                }
-            }
 
-            // Variable to check if at least one layer is visible
-            let isVisible = false;
+                for (let j = 0; j < style.layers.length; j++) {
+                    // Filter layers
+                    if (style.layers[j].id.search(filterRegExp) >= 0) {
+                        style.layers[j].layout.visibility = 'visible';
+                        isVisible = true;
 
-            for (let j = 0; j < style.layers.length; j++) {
-                // Filter layers
-                if (style.layers[j].id.search(filterRegExp) === -1) {
-                    style.layers[j].layout.visibility = 'none';
-                }
+                        // Create data source for layer
+                        if (style.sources['legend-source-' + i] === undefined) {
+                            style.sources['legend-source-' + i] = {
+                                'type': 'geojson'
+                            };
+                        }
 
-                if (style.layers[j].layout.visibility === 'visible') {
-                    isVisible = true;
+                        style.sources['legend-source-' + i].data = {
+                            'type': 'FeatureCollection',
+                            'features': features
+                        };
+                        style.layers[j]['source'] = 'legend-source-' + i;
+                    }
                 }
             }
 
             if (isVisible) {
-                style.sources['legend-source'].data = {
-                    'type': 'FeatureCollection',
-                    'features': features
-                };
-
+                // Render map
                 if (legendData[groupCounter].items[elementCounter].zoom !== undefined) {
                     renderMap.setZoom(legendData[groupCounter].items[elementCounter].zoom);
                 } else {
@@ -284,7 +296,7 @@ export function finishLegend() {
     // Remove empty groups
     for (let i = 0; i < document.querySelectorAll('.groupContainer').length; i++) {
         if (document.querySelector('#group' + i + ' .left').children.length === 0
-             && document.querySelector('#group' + i + ' .right').children.length === 0) {
+            && document.querySelector('#group' + i + ' .right').children.length === 0) {
             document.getElementById('group' + i).remove();
             document.getElementById('groupTitle' + i).remove();
         }
@@ -375,7 +387,7 @@ export function setResolution() {
     const selDpi = document.getElementById('selDpi');
     let dpi = selDpi.options[selDpi.selectedIndex].value;
     Object.defineProperty(window, 'devicePixelRatio', {
-        get: function() {return dpi / 96}
+        get: function () { return dpi / 96; }
     });
 }
 

@@ -1,3 +1,10 @@
+## v1.3.0 (2023-09-05)
+### Improvements and changes
+* Invisible style layers ("visibility": "none") are shown in the legend if they are defined in data.json.
+
+### Bug fixes
+* For each layer of a legend item a separate GeoJSON source is created in the style, so that GeoJSON configurations can't be applied to a wrong layer.
+
 ## v1.2.0 (2023-05-09)
 ### Improvements and changes
 * Create legend image in high resolution

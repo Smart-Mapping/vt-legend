@@ -199,7 +199,7 @@ With this parameter you can overwrite the default geometry of the _geomType_. De
 
 The maps center is: `[1, 0]`
 
-The maps bounding box is: `[0.998927, -0.0004292], [1.001073, 0.000429]`
+The bounding box of the map at the default zoom level 14 is: `[0.998927, -0.0004292], [1.001073, 0.000429]`
 
 Example of a point, with an offset to the south:
 
