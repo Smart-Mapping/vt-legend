@@ -329,10 +329,20 @@ export function createGeoJsonFeature(layer) {
     // Set default geometries
     let coordinates = [1, 0];
     let geomType = 'Point';
-    if (layer.geomType === 'Line') {
+    if (layer.geomType === 'MultiPoint') {
+        geomType = 'MultiPoint';
+        coordinates = [
+            [1, 0]
+        ];
+    } else if (layer.geomType === 'Line') {
         geomType = 'LineString';
         coordinates = [
-            [0.999, 0], [1.001, 0]
+            [0.998, 0], [1.002, 0]
+        ];
+    } else if (layer.geomType === 'MultiLine') {
+        geomType = 'MultiLineString';
+        coordinates = [
+            [[0.998, 0], [1.002, 0]]
         ];
     } else if (layer.geomType === 'Polygon') {
         geomType = 'MultiPolygon';

@@ -133,6 +133,15 @@ describe('createGeoJsonFeature()', () => {
         expect(result.geometry.type).toBe('Point');
     });
 
+    it('should create a MultiPoint feature', () => {
+        const layer = {
+            'geomType': 'MultiPoint'
+        };
+        const result = createGeoJsonFeature(layer);
+
+        expect(result.geometry.type).toBe('MultiPoint');
+    });
+
     it('should create a LineString feature', () => {
         const layer = {
             'geomType': 'Line'
@@ -141,7 +150,16 @@ describe('createGeoJsonFeature()', () => {
 
         expect(result.geometry.type).toBe('LineString');
     });   
-    
+
+    it('should create a MultiLineString feature', () => {
+        const layer = {
+            'geomType': 'MultiLine'
+        };
+        const result = createGeoJsonFeature(layer);
+
+        expect(result.geometry.type).toBe('MultiLineString');
+    });      
+
     it('should create a MultiPolygon feature', () => {
         const layer = {
             'geomType': 'Polygon'

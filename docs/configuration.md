@@ -116,13 +116,29 @@ By default the point is placed in the center of the map.
 
 Default POINT coordinates (EPSG:4326): `[1, 0]`
 
+`"MultiPoint"`: 
+
+By default a single point is placed in the center of the map.
+
+![MultiPoint](images/geom_type_point.png)
+
+Default MULTIPOINT coordinates (EPSG:4326): `[[1, 0]]`
+
 `"Line"`:
 
 The default line is a horizontal LineString on the equator.
 
 ![Line](images/geom_type_line.png)
 
-Default LINESTRING coordinates (EPSG:4326): `[0.999, 0], [1.001, 0]`
+Default LINESTRING coordinates (EPSG:4326): `[[0.998, 0], [1.002, 0]]`
+
+`"MultiLine"`:
+
+The default multi line is a horizontal MultiLineString on the equator.
+
+![MultiLine](images/geom_type_line.png)
+
+Default MULTILINESTRING coordinates (EPSG:4326): `[[[0.998, 0], [1.002, 0]]]`
 
 `"Polygon"`:
 
