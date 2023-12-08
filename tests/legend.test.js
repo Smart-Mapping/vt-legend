@@ -3,7 +3,7 @@ import path from 'path'
 import { Window } from 'happy-dom'
 import { it, expect, describe, vi, beforeAll } from 'vitest';
 
-import { isColorWhite, addGroup, toggleLogo, finishLegend, groupCounter, incrementGroupCounter, createGeoJsonFeature } from '../src/js/legend';
+import { isColorWhite, addGroup, toggleLogo, finishLegend, groupCounter, incrementGroupCounter, createGeoJsonFeature, setResolution, calcRatio } from '../src/js/legend';
 
 const htmlDocPath = path.join(process.cwd(), 'src/index.html');
 const htmlDocumentContent = fs.readFileSync(htmlDocPath).toString();
@@ -31,6 +31,8 @@ beforeAll(() => {
     document.querySelector('#group0 .left').appendChild(legendElement);
     document.querySelector('#group0 .right').appendChild(legendElement2);
     document.querySelector('#group0 .right').appendChild(legendElement3);
+
+    document.getElementById('selDpi').selectedIndex = 0;
 });
 
 describe('addGroup()', () => {
@@ -64,6 +66,13 @@ describe('toggleLogo()', () => {
         expect(document.getElementById('legendLogo').className).not.toContain('hidden');
         toggleLogo();
         expect(document.getElementById('legendLogo').className).toContain('hidden');
+    });
+});
+
+describe('calcRatio()', () => {
+    it('should change window.devicePixelRatio', () => {
+        document.getElementById('selDpi').selectedIndex = 1;
+        expect(calcRatio()).toBe(2);
     });
 });
 

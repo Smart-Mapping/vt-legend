@@ -13,6 +13,7 @@ let groupCounter = 0;
 let elementCounter = 0;
 let styleJson = {};
 const standardZoom = 14;
+const standardCenter = [1, 0];
 let renderMap = {};
 let isIdle = true;
 
@@ -23,9 +24,7 @@ export function initApp() {
     document.getElementById('selStyle').addEventListener('change', () => initStyle());
     document.getElementById('selDpi').addEventListener('change', () => {
         setResolution();
-        if (isIdle) {
-            initStyle();
-        }
+        initStyle();
     });
     document.getElementById('toggleLogo').addEventListener('change', () => {
         document.getElementById('legendLogo').classList.toggle('hidden');
@@ -36,9 +35,10 @@ export function initApp() {
 
     renderMap = new maplibregl.Map({
         container: 'renderMap',
-        center: [1, 0],
+        center: standardCenter,
         zoom: standardZoom
     });
+    renderMap.setPixelRatio(calcRatio());
 
     if (window.location.search.search(/override=true/) > -1) {
         fetch('data.json')
@@ -227,6 +227,11 @@ function createLegendItem() {
                 } else {
                     renderMap.setZoom(standardZoom);
                 }
+                if (legendData[groupCounter].items[elementCounter].center !== undefined) {
+                    renderMap.setCenter(legendData[groupCounter].items[elementCounter].center);
+                } else {
+                    renderMap.setCenter(standardCenter);
+                }
                 renderMap.setStyle(style);
                 elementCounter++;
             } else {
@@ -399,6 +404,12 @@ export function setResolution() {
     Object.defineProperty(window, 'devicePixelRatio', {
         get: function () { return dpi / 96; }
     });
+}
+
+export function calcRatio() {
+    const selDpi = document.getElementById('selDpi');
+    let dpi = selDpi.options[selDpi.selectedIndex].value;
+    return Math.ceil(dpi / 100);
 }
 
 /**
