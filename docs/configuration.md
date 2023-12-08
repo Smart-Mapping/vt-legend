@@ -77,6 +77,12 @@ _Optional number between `0` and `24`._
 
 If the map for the legend item image is to be rendered at a zoom level other than the default (level 14), the optional zoom parameter can be set. This may be necessary if the underlying style displays the required layers only at certain zoom levels.
 
+### center
+
+_Optional array of numbers._
+
+If the map for the legend item image is to be rendered at a center other than the default ([1, 0]), the optional center parameter can be set.
+
 ## Layers
 
 The layers array contains objects with filters for the style file layers and properties and optional coordinates for dummy datasets.

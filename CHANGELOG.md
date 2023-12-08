@@ -1,3 +1,12 @@
+## v1.4.0 (not released)
+### Improvements and changes
+* Add values "MultiLine" and "MultiPoint" for configuration parameter geomType.
+* Add new configuration parameter "center" for legend items.
+* Adaptation of the map pixelRatio to the resolution of the legend image.
+
+### Bug fixes
+* Extend default geometry for lines.
+
 ## v1.3.0 (2023-09-05)
 ### Improvements and changes
 * Invisible style layers ("visibility": "none") are shown in the legend if they are defined in data.json.
