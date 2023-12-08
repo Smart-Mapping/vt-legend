@@ -409,7 +409,7 @@ export function setResolution() {
 export function calcRatio() {
     const selDpi = document.getElementById('selDpi');
     let dpi = selDpi.options[selDpi.selectedIndex].value;
-    return Math.ceil(dpi / 100);
+    return Math.ceil(dpi / 100) + 1;
 }
 
 /**

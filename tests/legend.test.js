@@ -72,7 +72,7 @@ describe('toggleLogo()', () => {
 describe('calcRatio()', () => {
     it('should change window.devicePixelRatio', () => {
         document.getElementById('selDpi').selectedIndex = 1;
-        expect(calcRatio()).toBe(2);
+        expect(calcRatio()).toBe(3);
     });
 });
 
