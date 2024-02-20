@@ -47,6 +47,17 @@ A legend item has an image and a label. The image is created via a small map wit
 ]
 ```
 
+As an alternative to specifying a layers array, an SVG graphic can be integrated as an image. All you need to do is enter a label and an image URL.
+
+```json
+"items": [
+    {
+        "label": "school",
+        "image": "img/school.svg
+    }
+]
+```
+
 ### label
 
 _Required string._
@@ -55,7 +66,7 @@ Used as label for the legend item.
 
 ### layers
 
-_Required array of objects._
+_Optional array of objects._
 
 The layers property defines the content of the legend item image.
 
@@ -82,6 +93,12 @@ If the map for the legend item image is to be rendered at a zoom level other tha
 _Optional array of numbers._
 
 If the map for the legend item image is to be rendered at a center other than the default ([1, 0]), the optional center parameter can be set.
+
+### image
+
+_Optional string._
+
+A URL to a SVG graphic. If an image is specified, the legend image is not generated via the MapLibre map.
 
 ## Layers
 

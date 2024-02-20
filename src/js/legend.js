@@ -50,43 +50,10 @@ export function initApp() {
 
     // Convert map to image and create legend item when map finished rendering
     renderMap.on('idle', () => {
-        var canvas = renderMap.getCanvas(document.querySelector('#renderMap .mapbgoxgl-canvas'));
-        let container = document.createElement('div');
-        container.className = 'legend-element';
-        let text = document.createElement('span');
-        text.className = 'legend-label';
-        text.innerText = legendData[groupCounter].items[elementCounter - 1].label;
-        let img = document.createElement('img');
-        img.src = canvas.toDataURL();
-
-        // Add border for defined elements
-        const border = legendData[groupCounter].items[elementCounter - 1].border;
-        if (border === 'true') {
-            img.className = 'border';
-        } else if (border !== undefined && border === 'true_if_white') {
-            // Only add border if color of all visible fill layers is white
-            const style = renderMap.getStyle();
-            let isWhite = true;
-
-            for (let i = 0; i < style.layers.length; i++) {
-                if (style.layers[i].layout.visibility === 'visible' && style.layers[i].type === 'fill'
-                    && !isColorWhite(style.layers[i].paint['fill-color'])) {
-                    isWhite = false;
-                    break;
-                }
-            }
-
-            if (isWhite) {
-                img.className = 'border';
-            }
-        }
-
-        container.appendChild(img);
-        container.appendChild(text);
+        const element = createLegendItemElement(false, elementCounter - 1);
 
         let colClass = (elementCounter < (legendData[groupCounter].items.length / 2) + 1) ? '.left' : '.right';
-
-        document.querySelector('#group' + groupCounter + ' ' + colClass).appendChild(container);
+        document.querySelector('#group' + groupCounter + ' ' + colClass).appendChild(element);
         createLegendItem();
     });
 
@@ -178,66 +145,79 @@ function createLegendItem() {
         }
 
         if (elementCounter < legendData[groupCounter].items.length) {
-            let style = styleJson;
+            if (legendData[groupCounter].items[elementCounter].image != undefined
+                && legendData[groupCounter].items[elementCounter].image.length > 0) {
 
-            // Variable to check if at least one layer is visible
-            let isVisible = false;
+                const element = createLegendItemElement(true, elementCounter);
+                let colClass = (elementCounter < (legendData[groupCounter].items.length / 2) + 1) ? '.left' : '.right';
+                document.querySelector('#group' + groupCounter + ' ' + colClass).appendChild(element);
 
-            for (let j = 0; j < style.layers.length; j++) {
-                style.layers[j].layout.visibility = 'none';
-            }
-
-            for (let i = 0; i < legendData[groupCounter].items[elementCounter].layers.length; i++) {
-                let features = [];
-                let filterRegExp = '';
-
-                // Create GeoJSON dataset
-                const feature = createGeoJsonFeature(legendData[groupCounter].items[elementCounter].layers[i]);
-                features.push(feature);
-
-                // Add filter strings to RegExp
-                filterRegExp += legendData[groupCounter].items[elementCounter].layers[i].filter.join('|');
-
-                for (let j = 0; j < style.layers.length; j++) {
-                    // Filter layers
-                    if (style.layers[j].id.search(filterRegExp) >= 0) {
-                        style.layers[j].layout.visibility = 'visible';
-                        isVisible = true;
-
-                        // Create data source for layer
-                        if (style.sources['legend-source-' + i] === undefined) {
-                            style.sources['legend-source-' + i] = {
-                                'type': 'geojson'
-                            };
-                        }
-
-                        style.sources['legend-source-' + i].data = {
-                            'type': 'FeatureCollection',
-                            'features': features
-                        };
-                        style.layers[j]['source'] = 'legend-source-' + i;
-                    }
-                }
-            }
-
-            if (isVisible) {
-                // Render map
-                if (legendData[groupCounter].items[elementCounter].zoom !== undefined) {
-                    renderMap.setZoom(legendData[groupCounter].items[elementCounter].zoom);
-                } else {
-                    renderMap.setZoom(standardZoom);
-                }
-                if (legendData[groupCounter].items[elementCounter].center !== undefined) {
-                    renderMap.setCenter(legendData[groupCounter].items[elementCounter].center);
-                } else {
-                    renderMap.setCenter(standardCenter);
-                }
-                renderMap.setStyle(style);
-                elementCounter++;
-            } else {
-                // No layer with used filter is visible
                 elementCounter++;
                 createLegendItem();
+            } else {
+            
+            
+                let style = styleJson;
+
+                // Variable to check if at least one layer is visible
+                let isVisible = false;
+
+                for (let j = 0; j < style.layers.length; j++) {
+                    style.layers[j].layout.visibility = 'none';
+                }
+
+                for (let i = 0; i < legendData[groupCounter].items[elementCounter].layers.length; i++) {
+                    let features = [];
+                    let filterRegExp = '';
+
+                    // Create GeoJSON dataset
+                    const feature = createGeoJsonFeature(legendData[groupCounter].items[elementCounter].layers[i]);
+                    features.push(feature);
+
+                    // Add filter strings to RegExp
+                    filterRegExp += legendData[groupCounter].items[elementCounter].layers[i].filter.join('|');
+
+                    for (let j = 0; j < style.layers.length; j++) {
+                        // Filter layers
+                        if (style.layers[j].id.search(filterRegExp) >= 0) {
+                            style.layers[j].layout.visibility = 'visible';
+                            isVisible = true;
+
+                            // Create data source for layer
+                            if (style.sources['legend-source-' + i] === undefined) {
+                                style.sources['legend-source-' + i] = {
+                                    'type': 'geojson'
+                                };
+                            }
+
+                            style.sources['legend-source-' + i].data = {
+                                'type': 'FeatureCollection',
+                                'features': features
+                            };
+                            style.layers[j]['source'] = 'legend-source-' + i;
+                        }
+                    }
+                }
+
+                if (isVisible) {
+                    // Render map
+                    if (legendData[groupCounter].items[elementCounter].zoom !== undefined) {
+                        renderMap.setZoom(legendData[groupCounter].items[elementCounter].zoom);
+                    } else {
+                        renderMap.setZoom(standardZoom);
+                    }
+                    if (legendData[groupCounter].items[elementCounter].center !== undefined) {
+                        renderMap.setCenter(legendData[groupCounter].items[elementCounter].center);
+                    } else {
+                        renderMap.setCenter(standardCenter);
+                    }
+                    renderMap.setStyle(style);
+                    elementCounter++;
+                } else {
+                    // No layer with used filter is visible
+                    elementCounter++;
+                    createLegendItem();
+                }
             }
         } else if (groupCounter < legendData.length) {
             incrementGroupCounter();
@@ -246,6 +226,58 @@ function createLegendItem() {
     } else {
         finishLegend();
     }
+}
+
+/**
+ * Create a DOM element for a legend item
+ * @param {boolean} isCsv true: use CSV file for legend image; false: use map for legend image
+ * @param {*} elementCounter Counter for legend items
+ */
+export function createLegendItemElement(isCsv, elementCounter) {
+    let container = document.createElement('div');
+    container.className = 'legend-element';
+    let text = document.createElement('span');
+    text.className = 'legend-label';
+    text.innerText = legendData[groupCounter].items[elementCounter].label;
+    let img = document.createElement('img');
+
+    if (isCsv) {
+        img.src = legendData[groupCounter].items[elementCounter].image;
+        img.className = "img-svg";
+    } else {
+        let canvas = renderMap.getCanvas(document.querySelector('#renderMap .mapbgoxgl-canvas'));
+        img.src = canvas.toDataURL();
+    }
+
+    // Add border for defined elements
+    const border = legendData[groupCounter].items[elementCounter].border;
+    if (border === 'true') {
+        img.classList.add('border');
+    } else if (border !== undefined && border === 'true_if_white') {
+        // Only add border if color of all visible fill layers is white
+        const style = renderMap.getStyle();
+        let isWhite = true;
+
+        for (let i = 0; i < style.layers.length; i++) {
+            if (style.layers[i].layout.visibility === 'visible' && style.layers[i].type === 'fill'
+                && !isColorWhite(style.layers[i].paint['fill-color'])) {
+                isWhite = false;
+                break;
+            }
+        }
+
+        if (isWhite) {
+            img.classList.add('border');
+        }
+    }
+
+    let imgWrapper = document.createElement('div');
+    imgWrapper.className = 'img-wrap';
+    imgWrapper.appendChild(img);
+
+    container.appendChild(imgWrapper);
+    container.appendChild(text);
+    return container;
 }
 
 /**

@@ -70,7 +70,7 @@ describe('toggleLogo()', () => {
 });
 
 describe('calcRatio()', () => {
-    it('should change window.devicePixelRatio', () => {
+    it('should calculate the maps pixel ratio from dpi', () => {
         document.getElementById('selDpi').selectedIndex = 1;
         expect(calcRatio()).toBe(3);
     });
