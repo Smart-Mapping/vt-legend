@@ -2,6 +2,7 @@
 ### Improvements and changes
 * Add configuration for SVG instead of map images.
 * Add configuration to use raster services in the style.
+* Add configuration for overlay layers that are displayed in each legend item.
 
 ## v1.4.0 (2023-12-08)
 ### Improvements and changes

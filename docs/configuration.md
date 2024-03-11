@@ -31,6 +31,12 @@ _Required array of objects._
 
 The items property lists all legend elements for the assosiated group.
 
+### overlay
+
+_Optional object._
+
+This object contains a _layers_ array. All layers in this array are added to the _layers_ array of the _items_ in this group. The configuration is identical to the _layers_ array in _items_. Overlay layers can be used to define layers to be displayed in each item of the group.
+
 ## Items
 
 A legend item has an image and a label. The image is created via a small map with [MapLibre GL JS](https://github.com/maplibre/maplibre-gl-js). The map content is defined by the layers property.
@@ -125,7 +131,7 @@ You can create composite or overlaid objects in the map, by defining multiple ob
 
 ### geomType
 
-_Required string. One of `"Point"`, `"Line"`, `"Polygon"`._
+_Required string. One of `"Point"`, `"MultiPoint"`, `"Line"`, `"MultiLine"`, `"Polygon"`, `"Raster"`._
 
 For each of the three geometry types, a default geometry is created for display in the legend item image. The center of the map is the coordinate [1, 0] (EPSG:4326).
 
@@ -172,7 +178,9 @@ For this geometry type the default geometry is a MultiPolygon that almost fills 
 Default MULTIPOLYGON coordinates (EPSG:4326): \
 `[[[0.999, -0.00035], [0.999, 0.00035], [1.001, 0.00035], [1.001, -0.00035], [0.999, -0.00035]]]`
 
+`"Raster"`:
 
+If the style layer is a raster layer and not a vector layer, geomType must be set to "Raster". No geojson data is generated for this layer.
 
 ### filter
 
@@ -260,6 +268,12 @@ Example of two polygons:
     [[[1.00003, -0.00002],[1.00003, 0],[1.00005,0],[1.00005,-0.00002],[1.00003,-0.00002]]]
 ]
 ```
+
+### tilesUrl
+
+_Optional string._
+
+For raster layers, this attribute can be set to overwrite the tiles attribute of the raster source.
 
 # Override data.json
 

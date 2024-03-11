@@ -87,12 +87,12 @@ function initStyle() {
             }
             
             styleJson.sources['legend-source'] = {
-                                                    'type': 'geojson',
-                                                    'data': {
-                                                        'type': 'FeatureCollection',
-                                                        'features': []
-                                                    }
-                                                };
+                'type': 'geojson',
+                'data': {
+                    'type': 'FeatureCollection',
+                    'features': []
+                }
+            };
             for (let i = 0; i < styleJson.layers.length; i++) {
                 if (styleJson.layers[i].type !== 'raster') {
                     styleJson.layers[i]['source'] = 'legend-source';
@@ -160,8 +160,6 @@ function createLegendItem() {
                 elementCounter++;
                 createLegendItem();
             } else {
-            
-            
                 let style = styleJson;
 
                 // Variable to check if at least one layer is visible
@@ -169,6 +167,11 @@ function createLegendItem() {
 
                 for (let j = 0; j < style.layers.length; j++) {
                     style.layers[j].layout.visibility = 'none';
+                }
+                
+                // Add overlays
+                if (legendData[groupCounter].overlay !== undefined && legendData[groupCounter].overlay.layers.length > 0) {
+                    legendData[groupCounter].items[elementCounter].layers.push(legendData[groupCounter].overlay.layers[0]);
                 }
 
                 for (let i = 0; i < legendData[groupCounter].items[elementCounter].layers.length; i++) {
@@ -219,7 +222,7 @@ function createLegendItem() {
                     } else {
                         renderMap.setCenter(standardCenter);
                     }
-                    console.log(style)
+
                     renderMap.setStyle(style);
                     elementCounter++;
                 } else {
@@ -252,7 +255,7 @@ export function createLegendItemElement(isCsv, elementCounter) {
 
     if (isCsv) {
         img.src = legendData[groupCounter].items[elementCounter].image;
-        img.className = "img-svg";
+        img.className = 'img-svg';
     } else {
         let canvas = renderMap.getCanvas(document.querySelector('#renderMap .mapbgoxgl-canvas'));
         img.src = canvas.toDataURL();
