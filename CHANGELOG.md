@@ -1,4 +1,9 @@
-## v1.4.0 (not released)
+## v1.5.0 (not released)
+### Improvements and changes
+* Add configuration for SVG instead of map images.
+* Add configuration to use raster services in the style.
+
+## v1.4.0 (2023-12-08)
 ### Improvements and changes
 * Add values "MultiLine" and "MultiPoint" for configuration parameter geomType.
 * Add new configuration parameter "center" for legend items.

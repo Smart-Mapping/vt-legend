@@ -80,55 +80,60 @@ function initStyle() {
             styleJson = style;
 
             // Delete data sources to add dummy datasets later on
-            delete styleJson.sources;
-            styleJson.sources = {
-                'legend-source': {
-                    'type': 'geojson',
-                    'data': {
-                        'type': 'FeatureCollection',
-                        'features': []
-                    }
+            for (let i = 0; i < styleJson.sources; i++) {
+                if (styleJson.sources[i].type !== 'raster') {
+                    delete styleJson.sources[i];
                 }
-            };
+            }
+            
+            styleJson.sources['legend-source'] = {
+                                                    'type': 'geojson',
+                                                    'data': {
+                                                        'type': 'FeatureCollection',
+                                                        'features': []
+                                                    }
+                                                };
             for (let i = 0; i < styleJson.layers.length; i++) {
-                styleJson.layers[i]['source'] = 'legend-source';
-                delete styleJson.layers[i]['source-layer'];
-                delete styleJson.layers[i]['maxzoom'];
+                if (styleJson.layers[i].type !== 'raster') {
+                    styleJson.layers[i]['source'] = 'legend-source';
+                    delete styleJson.layers[i]['source-layer'];
+                    delete styleJson.layers[i]['maxzoom'];
 
-                // Set visibility if not explicitly set
-                if (style.layers[i].layout === undefined) {
-                    style.layers[i].layout = { 'visibility': 'visible' };
-                }
-
-                if (styleJson.layers[i].type === 'symbol') {
-                    // Show line symbols as a point so that the symbol is placed in the center
-                    if (styleJson.layers[i].layout['symbol-placement'] === 'line') {
-                        styleJson.layers[i].layout['symbol-placement'] = 'point';
+                    // Set visibility if not explicitly set
+                    if (style.layers[i].layout === undefined) {
+                        style.layers[i].layout = { 'visibility': 'visible' };
                     }
 
-                    // Set fixed anchor
-                    styleJson.layers[i].layout['text-anchor'] = 'center';
-                    delete styleJson.layers[i].layout['text-variable-anchor'];
-                }
+                    if (styleJson.layers[i].type === 'symbol') {
+                        // Show line symbols as a point so that the symbol is placed in the center
+                        if (styleJson.layers[i].layout['symbol-placement'] === 'line') {
+                            styleJson.layers[i].layout['symbol-placement'] = 'point';
+                        }
+
+                        // Set fixed anchor
+                        styleJson.layers[i].layout['text-anchor'] = 'center';
+                        delete styleJson.layers[i].layout['text-variable-anchor'];
+                    }
 
 
 
-                // No filter defined -> set layer id as filter 'klasse'
-                if (styleJson.layers[i].filter === undefined) {
-                    styleJson.layers[i].filter = ['==', ['get', 'klasse'], styleJson.layers[i].id];
+                    // No filter defined -> set layer id as filter 'klasse'
+                    if (styleJson.layers[i].filter === undefined) {
+                        styleJson.layers[i].filter = ['==', ['get', 'klasse'], styleJson.layers[i].id];
+                    }
                 }
             }
 
             // Delete data source 
-            if (styleJson.sources['smarttilesHL_de'] !== undefined) {
-                delete styleJson.sources['smarttilesHL_de'].url;
-                delete styleJson.sources['smarttilesHL_de'].attribution;
-                styleJson.sources['smarttilesHL_de'].type = 'geojson';
-                for (let i = 0; i < styleJson.layers.length; i++) {
-                    delete styleJson.layers[i]['source-layer'];
-                    delete styleJson.layers[i]['maxzoom'];
-                }
-            }
+            // if (styleJson.sources['smarttilesHL_de'] !== undefined) {
+            //     delete styleJson.sources['smarttilesHL_de'].url;
+            //     delete styleJson.sources['smarttilesHL_de'].attribution;
+            //     styleJson.sources['smarttilesHL_de'].type = 'geojson';
+            //     for (let i = 0; i < styleJson.layers.length; i++) {
+            //         delete styleJson.layers[i]['source-layer'];
+            //         delete styleJson.layers[i]['maxzoom'];
+            //     }
+            // }
             createLegendItem();
         });
 }
@@ -182,19 +187,22 @@ function createLegendItem() {
                         if (style.layers[j].id.search(filterRegExp) >= 0) {
                             style.layers[j].layout.visibility = 'visible';
                             isVisible = true;
+                            if (style.layers[j].type !== 'raster') {
+                                // Create data source for layer
+                                if (style.sources['legend-source-' + i] === undefined) {
+                                    style.sources['legend-source-' + i] = {
+                                        'type': 'geojson'
+                                    };
+                                }
 
-                            // Create data source for layer
-                            if (style.sources['legend-source-' + i] === undefined) {
-                                style.sources['legend-source-' + i] = {
-                                    'type': 'geojson'
+                                style.sources['legend-source-' + i].data = {
+                                    'type': 'FeatureCollection',
+                                    'features': features
                                 };
+                                style.layers[j]['source'] = 'legend-source-' + i;
+                            } else if (legendData[groupCounter].items[elementCounter].layers[i].tilesUrl !== undefined){
+                                style.sources[style.layers[j]['source']].tiles = [legendData[groupCounter].items[elementCounter].layers[i].tilesUrl];
                             }
-
-                            style.sources['legend-source-' + i].data = {
-                                'type': 'FeatureCollection',
-                                'features': features
-                            };
-                            style.layers[j]['source'] = 'legend-source-' + i;
                         }
                     }
                 }
@@ -211,6 +219,7 @@ function createLegendItem() {
                     } else {
                         renderMap.setCenter(standardCenter);
                     }
+                    console.log(style)
                     renderMap.setStyle(style);
                     elementCounter++;
                 } else {
