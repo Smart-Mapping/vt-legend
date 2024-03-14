@@ -1,6 +1,6 @@
 {
   "name": "vt-legend",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Create legends for vector tile styles",
   "scripts": {
     "test": "vitest --coverage --run --environment happy-dom",
@@ -18,7 +18,7 @@
     "@parcel/transformer-sass": "^2.5.0",
     "@vitest/coverage-v8": "^1.0.1",
     "eslint": "^8.15.0",
-    "happy-dom": "^12.10.3",
+    "happy-dom": "^13.7.3",
     "parcel": "^2.6.0",
     "process": "^0.11.10",
     "vitest": "^1.0.1"

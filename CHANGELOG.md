@@ -1,4 +1,4 @@
-## v1.5.0 (not released)
+## v1.5.0 (2024-03-14)
 ### Improvements and changes
 * Add configuration for SVG instead of map images.
 * Add configuration to use raster services in the style.

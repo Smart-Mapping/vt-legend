@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="20"
+   height="20"
+   viewBox="0 0 5.2916665 5.2916668"
+   version="1.1"
+   id="svg857"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   sodipodi:docname="Zoo_Einzelzeichen.svg">
+  <defs
+     id="defs851">
+    <pattern
+       id="EMFhbasepattern"
+       patternUnits="userSpaceOnUse"
+       width="6"
+       height="6"
+       x="0"
+       y="0" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="22.4"
+     inkscape:cx="-0.15442215"
+     inkscape:cy="13.677259"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1177"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata854">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#767676;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.0253325"
+       d="m 3.6337976,2.9667109 c -0.033777,0.042221 -0.084441,0.067553 -0.1435504,0.067553 -0.092886,0 -0.1773271,-0.075998 -0.1773271,-0.177327 0,-0.5404253 0,-0.5404253 0,-0.5404253 0,-0.2786568 -0.2279919,-0.5150929 -0.5150928,-0.5150929 -0.084442,0 -0.084442,0 -0.084442,0 -0.1604387,0.00844 -0.2871009,0.1435505 -0.2871009,0.3039892 0,0.1688829 0.1351063,0.3039892 0.3039893,0.3039892 0,0.2111037 0,0.2111037 0,0.2111037 -0.2871009,0 -0.515093,-0.227992 -0.515093,-0.5150929 0,-0.1097736 0.042221,-0.2195477 0.1013304,-0.3039892 -0.3462099,0 -0.3462099,0 -0.3462099,0 -0.2871009,0 -0.5150929,0.2364361 -0.5150929,0.5150929 0,0.5404253 0,0.5404253 0,0.5404253 0,0.5150928 0,0.5150928 0,0.5150928 0,0.067553 0.050665,0.1182183 0.1182183,0.1182183 0.2955451,0 0.2955451,0 0.2955451,0 0.059108,0 0.1182183,-0.050666 0.1182183,-0.1182183 0,-0.3630983 0,-0.3630983 0,-0.3630983 0.050666,0.00844 0.1435506,0.00844 0.2026596,0.00844 0.050666,0 0.1435505,0 0.1942153,-0.00844 0,0.3630983 0,0.3630983 0,0.3630983 0,0.067553 0.050666,0.1182183 0.1182183,0.1182183 0.295545,0 0.295545,0 0.295545,0 0.067553,0 0.1182183,-0.050666 0.1182183,-0.1182183 0,-0.5150928 0,-0.5150928 0,-0.5150928 0.1351064,0 0.1351064,0 0.1351064,0 0,0.2448802 0.2026594,0.4390955 0.4390956,0.4390955 0.1351062,0 0.2617684,-0.059108 0.3462098,-0.1604387 z M 3.017375,2.3418442 c -0.059108,0 -0.1013303,-0.042221 -0.1013303,-0.1013303 0,-0.059108 0.042221,-0.1013303 0.1013303,-0.1013303 0.059108,0 0.1013304,0.042221 0.1013304,0.1013303 0,0.059108 -0.042221,0.1013303 -0.1013304,0.1013303 z"
+       id="path834" />
+  </g>
+</svg>

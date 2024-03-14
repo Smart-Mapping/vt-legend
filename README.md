@@ -73,4 +73,4 @@ You can find more details about the customization of the legend in the [configur
 ## License
 Licensed under the European Union Public License (EUPL). For more information see [LICENSE.txt](LICENSE.txt).
 
-Copyright 2022-2023 Landesamt für Geoinformation und Landesvermessung Niedersachsen
+Copyright 2022-2024 Landesamt für Geoinformation und Landesvermessung Niedersachsen

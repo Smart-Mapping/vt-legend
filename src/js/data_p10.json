@@ -1,7 +1,18 @@
-[         
+[          
     {
         "group": "Siedlung",
-        "items": [
+        "overlay": {
+            "layers": [
+                {
+                    "geomType": "raster",
+                    "tilesUrl": "https://<host>/wms?tiled=true&bbox=1035874.6073207073,6886670.500381239,1037097.5997732729,6887893.492833804&service=WMS&version=1.3.0&request=GetMap&layers=de_basemapde_web_raster_combshade&styles=&crs=EPSG:3857&width=256&height=256&format=image/png&transparent=true",
+                    "filter": [
+                        "\\bSchummerung_Comb\\b"
+                    ]
+                }                  
+            ]
+        },
+        "items": [            
             {
                 "label": "Name einer Stadt, Gemeinde",
                 "zoom": 10,
@@ -109,6 +120,7 @@
             },
             {
                 "label": "Tagebau, Bergbau",
+                "center": [0.9995, -0.00025],
                 "layers": [
                     {
                         "geomType": "Polygon",
@@ -117,7 +129,23 @@
                         ],
                         "properties": {
                             "klasse": "Tagebau, Grube, Steinbruch"
-                        }
+                        },
+                        "coordinates": [
+                            [[[0.998, -0.005], [0.998, 0.005], [0.99945, 0.005], [0.99945, -0.005], [0.998, -0.005]]]
+                        ]
+                    },
+                    {
+                        "geomType": "Polygon",
+                        "filter": [
+                            "SdlFF_Bergbau",
+                            "SdlFM_Bergbau"
+                        ],
+                        "properties": {
+                            "klasse": "Bergbau"
+                        },
+                        "coordinates": [
+                            [[[0.9995, -0.005], [0.9995, 0.005], [1.01, 0.005], [1.01, -0.005], [10.9995, -0.005]]]
+                        ]
                     }
                 ]
             },
@@ -317,21 +345,20 @@
     },
     {
         "group": "Verkehr",
-        "items": [
+        "items": [                         
             {
                 "label": "Autobahn",
                 "layers": [
                     {
-                        "geomType": "Line",
+                        "geomType": "Point",
                         "filter": [
-                            "Nummer_StrLA_Autobahn"
+                            "Nummer_SymPA_Autobahn_StrL"
                         ],
                         "properties": {
                             "klasse": "Bundesautobahn",
                             "nummer": 10,
                             "laenge": 5000
-                        },
-                        "coordinates": [[1,0], [1.1,0]]
+                        }
                     },
                     {
                         "geomType": "Line",
@@ -353,7 +380,7 @@
                     {
                         "geomType": "Line",
                         "filter": [
-                            "Nummer_StrLA_Bundesstr"
+                            "Nummer_SymPA_Bundesstr_StrL"
                         ],
                         "properties": {
                             "klasse": "Bundesstraße",
@@ -627,11 +654,12 @@
             },
             {
                 "label": "Flughafen",
+                "zoom": 12.5,
                 "layers": [
                     {
                         "geomType": "Point",
                         "filter": [
-                            "\\bSymbolName_FluPA_Flughafen_bis2\\b"
+                            "\\SymbolName_NamPA_Flughafen_FluF_bis2\\b"
                         ],
                         "properties": {
                             "klasse": "Flughafen",
@@ -641,35 +669,53 @@
                         "coordinates": [1, 0]
                     }
                 ]
-            },      
+            }, 
             {
-                "label": "Segelfluggelände",
+                "label": "Flugplatz",
+                "layers": [
+                    {
+           
+
+                        "geomType": "Point",
+                        "filter": [
+                            "\\Name_NamPA_Flugplatz_FluF_bis2\\b"
+                        ],
+                        "properties": {
+                            "klasse": "Flugverkehr",
+                            "flaeche": 1.8,
+                            "name": "Flugplatz                                    XY"
+                        }
+                    }
+                ]
+            },            
+            {
+                "label": "Segelflugplatz",
                 "layers": [
                     {
                         "geomType": "Point",
                         "filter": [
-                            "Symbol_FluFA_Segelfluggelaende"
+                            "Symbol_SymPA_Segelfluggelaende_FluF"
                         ],
                         "properties": {
                             "klasse": "Segelfluggelände"
                         }
                     }
                 ]
-            },  
+            }, 
             {
                 "label": "Hubschrauberlandeplatz",
                 "layers": [
                     {
                         "geomType": "Point",
                         "filter": [
-                            "Symbol_FluFA_Hubschrauberlandeplatz"
+                            "Symbol_SymPA_Hubschrauberlandeplatz_FluF"
                         ],
                         "properties": {
                             "klasse": "Hubschrauberlandeplatz"
                         }
                     }
                 ]
-            },     
+            },      
             {
                 "label": "Seilbahn, Lift",
                 "layers": [
@@ -718,26 +764,70 @@
     }, 
     {
         "group": "Vegetation",
-        "items": [
+        "overlay": {
+            "layers": [
+                {
+                    "geomType": "Raster",
+                    "tilesUrl": "https://<host>/wms?tiled=true&bbox=1035874.6073207073,6886670.500381239,1037097.5997732729,6887893.492833804&service=WMS&version=1.3.0&request=GetMap&layers=de_basemapde_web_raster_combshade&styles=&crs=EPSG:3857&width=256&height=256&format=image/png&transparent=true",
+                    "filter": [
+                        "\\bSchummerung_Comb\\b"
+                    ]
+                }                  
+            ]
+        },
+        "items": [                               
             {
-                "label": "Wald, Gehölz",
-                "center": [1.0002, -0.0004],
+                "label": "Wald",
+                "center": [1, -0.0003],
                 "layers": [
                     {
                         "geomType": "Polygon",
                         "filter": [
-                            "VegFF_Wald",
-                            "VegFM_Wald"
+                            "VegFM_Nadelholz",
+                            "VegFF_Nadelholz"
                         ],
                         "properties": {
-                            "klasse": "Wald"
+                            "klasse": "Nadelholz"
                         },
                         "coordinates": [
                             [[[0.99, -0.005], [0.99, 0.005], [1.01, 0.005], [1.01, -0.005], [0.99, -0.005]]]
                         ]
-                    }
+                    }                    
                 ]
             },
+            {
+                "label": "Gehölz",
+                "center": [1, -0.0003],
+                "layers": [
+                    {
+                        "geomType": "Polygon",
+                        "filter": [
+                            "VegFM_Gehoelz",
+                            "VegFF_Gehoelz"
+                        ],
+                        "properties": {
+                            "klasse": "Gehölz"
+                        },
+                        "coordinates": [
+                            [[[0.99, -0.005], [0.99, 0.005], [1.01, 0.005], [1.01, -0.005], [0.99, -0.005]]]
+                        ]
+                    }                    
+                ]
+            },             
+            {
+                "label": "Baumschule",
+                "layers": [
+                    {
+                        "geomType": "Polygon",
+                        "filter": [
+                            "Baumschule"
+                        ],
+                        "properties": {
+                            "klasse": "Baumschule"
+                        }
+                    }
+                ]
+            },                     
             {
                 "label": "Grünland",
                 "layers": [
@@ -771,8 +861,79 @@
                 ]
             },
             {
+                "label": "Hopfen",
+                "center": [0.9999, -0.0001],                
+                "layers": [
+                    {
+                        "geomType": "Polygon",
+                        "filter": [
+                            "VegFF_Hopfen",
+                            "VegFM_Hopfen"
+                        ],
+                        "properties": {
+                            "klasse": "Hopfen"
+                        },
+                        "coordinates": [
+                            [[[0.99, -0.005], [0.99, 0.005], [1.01, 0.005], [1.01, -0.005], [0.99, -0.005]]]
+                        ]
+                    }
+                ]
+            },    
+            {
+                "label": "Weingarten",
+                "layers": [
+                    {
+                        "geomType": "Polygon",
+                        "filter": [
+                            "VegFF_Weingarten",
+                            "VegFM_Weingarten"
+                        ],
+                        "properties": {
+                            "klasse": "Weingarten"
+                        }
+                    }
+                ]
+            },
+            {
+                "label": "Obstplantage",
+                "layers": [
+                    {
+                        "geomType": "Polygon",
+                        "filter": [
+                            "VegFF_Obstplantage",
+                            "VegFM_Obstplantage"
+                        ],
+                        "properties": {
+                            "klasse": "Obstplantage"
+                        },
+                        "coordinates": [
+                            [[[0.99, -0.005], [0.99, 0.005], [1.01, 0.005], [1.01, -0.005], [0.99, -0.005]]]
+                        ]
+                    }
+                ]
+            },
+            {
+                "label": "Streuobstwiese",
+                "center": [1, -0.0002],                
+                "layers": [
+                    {
+                        "geomType": "Polygon",
+                        "filter": [
+                            "VegFF_Streuobstwiese",
+                            "VegFM_Streuobstwiese"
+                        ],
+                        "properties": {
+                            "klasse": "Streuobstwiese"
+                        },
+                        "coordinates": [
+                            [[[0.99, -0.005], [0.99, 0.005], [1.01, 0.005], [1.01, -0.005], [0.99, -0.005]]]
+                        ]
+                    }
+                ]
+            },                                               
+            {
                 "label": "Heide",
-                "center": [1.0001, -0.0002],
+                "center": [1, -0.0002],
                 "layers": [
                     {
                         "geomType": "Polygon",
@@ -789,8 +950,8 @@
                 ]
             },
             {
-                "label": "Moor, Sumpf",
-                "center": [0.9988, 0.00015],
+                "label": "Moor",
+                "center": [0.999, 0.0002],
                 "layers": [
                     {
                         "geomType": "Polygon",
@@ -807,6 +968,42 @@
                 ]
             },
             {
+                "label": "Sumpf, nasser Boden",
+                "center": [0.9995, -0.0003],
+                "layers": [
+                    {
+                        "geomType": "Polygon",
+                        "filter": [
+                            "Sumpf"
+                        ],
+                        "properties": {
+                            "klasse": "Sumpf"
+                        },
+                        "coordinates": [
+                            [[[0.99, -0.005], [0.99, 0.005], [1.01, 0.005], [1.01, -0.005], [0.99, -0.005]]]
+                        ]
+                    }
+                ]
+            },          
+            {
+                "label": "Schilf, Röhricht",
+                "center": [0.9984, -0.0002],
+                "layers": [
+                    {
+                        "geomType": "Polygon",
+                        "filter": [
+                            "VegFM_SchilfRoehricht"
+                        ],
+                        "properties": {
+                            "klasse": "Röhricht, Schilf"
+                        },
+                        "coordinates": [
+                            [[[0.99, -0.005], [0.99, 0.005], [1.01, 0.005], [1.01, -0.005], [0.99, -0.005]]]
+                        ]
+                    }
+                ]
+            },                     
+            {
                 "label": "Ackerland, Plantage, Baumschule",
                 "border": "true_if_white",
                 "layers": [
@@ -820,7 +1017,26 @@
                         }
                     }
                 ]
-            },                      
+            },
+            {
+                "label": "Torf",
+                "center": [1, -0.0002],
+                "layers": [
+                    {
+                        "geomType": "Polygon",
+                        "filter": [
+                            "Torf"
+                        ],
+                        "properties": {
+                            "klasse": "Tagebau, Grube, Steinbruch",
+                            "art": "Torf"
+                        },
+                        "coordinates": [
+                            [[[0.99, -0.005], [0.99, 0.005], [1.01, 0.005], [1.01, -0.005], [0.99, -0.005]]]
+                        ]
+                    }
+                ]
+            },                                    
             {
                 "label": "Laub-, Nadelbaum",
                 "zoom": 16,
@@ -908,7 +1124,7 @@
             },
             {
                 "label": "Eis, Firn",
-                "border": "true",
+                "border": "true_if_white",
                 "layers": [
                     {
                         "geomType": "Polygon",
@@ -970,28 +1186,53 @@
                         }
                     }
                 ]
+            },
+            {
+                "label": "Einschnitt",
+                "layers": [
+                    {
+                        "geomType": "Line",
+                        "filter": [
+                            "Einschnitt"
+                        ],
+                        "properties": {
+                            "klasse": "Einschnitt"
+                        }
+                    }
+                ]
             }
         ]
-    },  
+    },      
     {
         "group": "Gewässer",
-        "items": [
+        "overlay": {
+            "layers": [
+                {
+                    "geomType": "raster",
+                    "tilesUrl": "https://<host>/wms?tiled=true&bbox=1035874.6073207073,6886670.500381239,1037097.5997732729,6887893.492833804&service=WMS&version=1.3.0&request=GetMap&layers=de_basemapde_web_raster_combshade&styles=&crs=EPSG:3857&width=256&height=256&format=image/png&transparent=true",
+                    "filter": [
+                        "\\bSchummerung_Comb\\b"
+                    ]
+                }                  
+            ]
+        },
+        "items": [             
             {
                 "label": "Name eines Gewässers",
                 "layers": [
                     {
                         "geomType": "Point",
                         "filter": [
-                            "Name_GewFA_See_bis2"
+                            "Name_NamPA_See_GewF_bis2"
                         ],
                         "properties": {
                             "klasse": "See",
                             "flaeche": 1.8,
-                            "name": "Rhein"
+                            "name": "RHEIN"
                         }
                     }
                 ]
-            },
+            },           
             {
                 "label": "Meer",
                 "layers": [
@@ -1035,6 +1276,29 @@
                 ]
             },
             {
+                "label": "Stromschnelle",
+                "layers": [
+                    {
+                        "geomType": "Polygon",
+                        "filter": [
+                            "GewFF_See"
+                        ],
+                        "properties": {
+                            "klasse": "See"
+                        }
+                    },
+                    {
+                        "geomType": "Polygon",
+                        "filter": [
+                            "Stromschnelle"
+                        ],
+                        "properties": {
+                            "klasse": "Stromschnelle"
+                        }
+                    }
+                ]
+            },              
+            {
                 "label": "Fluss, Bach",
                 "layers": [
                     {
@@ -1048,7 +1312,23 @@
                         }
                     }
                 ]
-            },
+            },           
+            {
+                "label": "Fließrichtungsfeil",
+                "center": [0.998, -0.00015],
+                "layers": [
+                    {
+                        "geomType": "Line",
+                        "filter": [
+                            "Symbol_GewLA_Fliessrichtungspfeil_Gewaesserachse"
+                        ],
+                        "properties": {
+                            "klasse": "Gewässerachse",
+                            "richtung": true
+                        }
+                    }
+                ]
+            },             
             {
                 "label": "Quelle",
                 "layers": [
@@ -1144,24 +1424,103 @@
                 ]
             },
             {
-                "label": "Schleuse",
+                "label": "Schleusenkammer",
                 "layers": [
                     {
-                        "geomType": "Line",
+                        "geomType": "Polygon",
                         "filter": [
-                            "Schleuse"
+                            "GewFF_See"
                         ],
                         "properties": {
-                            "klasse": "Schleuse"
+                            "klasse": "See"
+                        }
+                    },
+                    {
+                        "geomType": "Polygon",
+                        "filter": [
+                            "BwkLK_Schleusenkammer"
+                        ],
+                        "properties": {
+                            "klasse": "Schleusenkammer"
                         }
                     }
                 ]
             }
         ]
-    }, 
+    },    
     {
         "group": "Relief",
-        "items": [
+        "items": [  
+            {
+                "label": "Zähllinie (100er)",
+                "layers": [
+                    {
+                        "geomType": "Line",
+                        "filter": [
+                            "HoeLL_100er_Hoehenlinie"
+                        ],
+                        "properties": {
+                            "klasse": "100er"
+                        }
+                    }
+                ]
+            },
+            {
+                "label": "Hauptlinie (50er)",
+                "layers": [
+                    {
+                        "geomType": "Line",
+                        "filter": [
+                            "HoeLL_50er_Hoehenlinie"
+                        ],
+                        "properties": {
+                            "klasse": "50er"
+                        }
+                    }
+                ]
+            },  
+            {
+                "label": "1. Hilfslinie (10er)",
+                "layers": [
+                    {
+                        "geomType": "Line",
+                        "filter": [
+                            "HoeLL_10er_Hoehenlinie"
+                        ],
+                        "properties": {
+                            "klasse": "10er"
+                        }
+                    }
+                ]
+            }, 
+            {
+                "label": "2. Hilfslinie (5er)",
+                "layers": [
+                    {
+                        "geomType": "Line",
+                        "filter": [
+                            "HoeLL_5er_Hoehenlinie"
+                        ],
+                        "properties": {
+                            "klasse": "5er"
+                        }
+                    }
+                ]
+            }, 
+            {
+                "label": "3. Hilfslinie (2,5er)",
+                "layers": [
+                    {
+                        "geomType": "Line",
+                        "filter": [
+                            "HoeLL_2-5er_Hoehenlinie"
+                        ],
+                        "properties": {
+                            "klasse": "2.5er"
+                        }
+                    }
+                ]
+            },                               
             {
                 "label": "Damm, Wall, Deich",
                 "layers": [
@@ -1176,46 +1535,7 @@
                         }
                     }
                 ]
-            },  
-            {
-                "label": "Einschnitt",
-                "layers": [
-                    {
-                        "geomType": "Line",
-                        "filter": [
-                            "Einschnitt"
-                        ],
-                        "properties": {
-                            "klasse": "Einschnitt"
-                        }
-                    }
-                ]
-            },
-            {
-                "label": "Höhenlinien",
-                "layers": [
-                    {
-                        "geomType": "Line",
-                        "filter": [
-                            "HoeLL_100er_Hoehenlinie"
-                        ],
-                        "properties": {
-                            "klasse": "100er"
-                        },
-                        "coordinates": [[0.998, 0.00015], [1.002, 0.00015]]
-                    },
-                    {
-                        "geomType": "Line",
-                        "filter": [
-                            "HoeLL_10er_Hoehenlinie"
-                        ],
-                        "properties": {
-                            "klasse": "10er"
-                        },
-                        "coordinates": [[0.998, -0.00015], [1.002, -0.00015]]
-                    }
-                ]
-            },
+            },        
             {
                 "label": "Felsen",
                 "layers": [
@@ -1229,9 +1549,9 @@
                         }
                     }
                 ]
-            }        
+            }      
         ]
-    },       
+    },    
     {
         "group": "Verwaltungsgrenzen",
         "items": [
@@ -1278,7 +1598,7 @@
                 ]
             },
             {
-                "label": "Kreisgrenze",
+                "label": "Kreisgrenze, Grenze kreisfreie Stadt",
                 "layers": [
                     {
                         "geomType": "Line",
@@ -1337,7 +1657,7 @@
     },
     {
         "group": "Sonstige Einzelzeichen",
-        "items": [
+        "items": [                                                                 
             {
                 "label": "Kirche",
                 "layers": [
@@ -1378,7 +1698,8 @@
                         ],
                         "properties": {
                             "klasse": "Kapelle"
-                        }
+                        },
+                        "coordinates": [1, -0.00015]
                     }
                 ]
             },
@@ -1388,7 +1709,7 @@
                     {
                         "geomType": "Point",
                         "filter": [
-                            "Schloss"
+                            "Symbol_GebPA_SchlossBurgFestung"
                         ],
                         "properties": {
                             "klasse": "Schloss"
@@ -1396,7 +1717,7 @@
                         "coordinates": [1, -0.00015]
                     }
                 ]
-            },
+            },          
             {
                 "label": "Krankenhaus",
                 "layers": [
@@ -1411,6 +1732,20 @@
                     }
                 ]
             }, 
+            {
+                "label": "Sanatorium",
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "Symbol_GebPA_Sanatorium"
+                        ],
+                        "properties": {
+                            "klasse": "Sanatorium"
+                        }
+                    }
+                ]
+            },             
             {
                 "label": "Polizei",
                 "layers": [
@@ -1454,6 +1789,20 @@
                 ]
             },
             {
+                "label": "Schule",
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "Symbol_GebPA_Schule"
+                        ],
+                        "properties": {
+                            "klasse": "Allgemein bildende Schule"
+                        }
+                    }
+                ]
+            },            
+            {
                 "label": "Museum",
                 "layers": [
                     {
@@ -1496,19 +1845,77 @@
                 ]
             },
             {
+                "label": "Tiefgarage",
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "Symbol_GebPA_Tiefgarage"
+                        ],
+                        "properties": {
+                            "klasse": "Tiefgarage"
+                        }
+                    }
+                ]
+            },
+            {
+                "label": "Raststätte",
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "Raststaette"
+                        ],
+                        "properties": {
+                            "klasse": "Raststätte",
+                            "flaeche": 0.7
+                        }
+                    }
+                ]
+            },
+            {
+                "label": "Rastplatz",
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "Rastplatz"
+                        ],
+                        "properties": {
+                            "klasse": "Rastplatz",
+                            "flaeche": 1.5
+                        }
+                    }
+                ]
+            },                                    
+            {
                 "label": "Schwimmbad",
                 "layers": [
                     {
                         "geomType": "Point",
                         "filter": [
-                            "Symbol_SdlFA_Schwimmbad"
+                            "Schwimmbad"
                         ],
                         "properties": {
                             "klasse": "Schwimmbad, Freibad"
                         }
                     }
                 ]
-            },     
+            }, 
+            {
+                "label": "Hallenbad",
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "Symbol_GebPA_Hallenbad"
+                        ],
+                        "properties": {
+                            "klasse": "Hallenbad"
+                        }
+                    }
+                ]
+            },                 
             {
                 "label": "Histor. Befestigung, Lager, Grab",
                 "layers": [
@@ -1578,10 +1985,25 @@
                         ],
                         "properties": {
                             "klasse": "Schloss-, Burgturm"
+                        },
+                        "coordinates": [1, -0.0002]
+                    }
+                ]
+            }, 
+            {
+                "label": "Kirchturm",
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "Kirchturm"
+                        ],
+                        "properties": {
+                            "klasse": "Kirchturm, Glockenturm"
                         }
                     }
                 ]
-            },  
+            },               
             {
                 "label": "Denkmal",
                 "layers": [
@@ -1625,6 +2047,20 @@
                     }
                 ]
             },
+            {
+                "label": "Schießstand",
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "Schiessanlage"
+                        ],
+                        "properties": {
+                            "klasse": "Schießanlage"
+                        }
+                    }
+                ]
+            },            
             {
                 "label": "Stollenmundloch",
                 "layers": [
@@ -1671,6 +2107,116 @@
                     }
                 ]
             },    
+            {
+                "label": "Bergbau",
+                "zoom": 14,
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "Bergbau"
+                        ],
+                        "properties": {
+                            "klasse": "Bergbau"
+                        }
+                    }
+                ]
+            }, 
+            {
+                "label": "Bergbau, außer Betrieb",
+                "zoom": 14,
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "Bergbau_stillgelegt"
+                        ],
+                        "properties": {
+                            "klasse": "Bergbau",
+                            "zustand": "Außer Betrieb, stillgelegt, verlassen"
+                        }
+                    }
+                ]
+            }, 
+            {
+                "label": "Wasserpumpe",
+                "zoom": 14,
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "Symbol_VsoPA_Wasserpumpe"
+                        ],
+                        "properties": {
+                            "klasse": "Pumpe",
+                            "produkt": "Trinkwasser"
+                        }
+                    }
+                ]
+            }, 
+            {
+                "label": "Abwasserpumpe",
+                "zoom": 14,
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "Symbol_VsoPA_Abwasserpumpe"
+                        ],
+                        "properties": {
+                            "klasse": "Pumpe",
+                            "produkt": "Abwasser"
+                        }
+                    }
+                ]
+            }, 
+            {
+                "label": "Erdgaspumpe",
+                "zoom": 14,
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "Erdgaspumpe"
+                        ],
+                        "properties": {
+                            "klasse": "Förderanlage",
+                            "art": "Erdgas"
+                        }
+                    }
+                ]
+            },
+            {
+                "label": "Erdölpumpe",
+                "zoom": 14,
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "Erdoelpumpe"
+                        ],
+                        "properties": {
+                            "klasse": "Förderanlage",
+                            "art": "Erdöl"
+                        }
+                    }
+                ]
+            },            
+            {
+                "label": "Vorratsbehälter",
+                "zoom": 14,
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "Symbol_BwkPA_Vorratsbehaelter"
+                        ],
+                        "properties": {
+                            "klasse": "Tank"
+                        }
+                    }
+                ]
+            }, 
             {
                 "label": "Kran",
                 "layers": [
@@ -1745,12 +2291,27 @@
                 ]
             }, 
             {
+                "label": "Schornstein",
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "Symbol_BwkPA_Schornstein"
+                        ],
+                        "properties": {
+                            "klasse": "Schornstein, Schlot, Esse"
+                        },
+                        "coordinates": [1, -0.0002]
+                    }
+                ]
+            },             
+            {
                 "label": "Kühlturm",
                 "layers": [
                     {
                         "geomType": "Point",
                         "filter": [
-                            "Kuehlturm"
+                            "SymbolName_BwkPA_Kuehlturm"
                         ],
                         "properties": {
                             "klasse": "Kühlturm"
@@ -1759,6 +2320,20 @@
                     }
                 ]
             },
+            {
+                "label": "Klärwerk",
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "Symbol_SymPA_Klaerwerk_SdlF"
+                        ],
+                        "properties": {
+                            "klasse": "Kläranlage, Klärwerk"
+                        }
+                    }
+                ]
+            },            
             {
                 "label": "Windmühle",
                 "layers": [
@@ -1804,20 +2379,33 @@
                 ]
             },
             {
+                "label": "Wasserbehälter",
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "Symbol_GebPA_Wasserbehaelter"
+                        ],
+                        "properties": {
+                            "klasse": "Wasserbehälter"
+                        }
+                    }
+                ]
+            },               
+            {
                 "label": "Wasserturm",
                 "layers": [
                     {
                         "geomType": "Point",
                         "filter": [
-                            "Symbol_BwkPA_Wassserturm"
+                            "Wassserturm"
                         ],
                         "properties": {
                             "klasse": "Wasserturm"
-                        },
-                        "coordinates": [1, -0.0002]
+                        }
                     }
                 ]
-            },                
+            },                                      
             {
                 "label": "Funkturm",
                 "layers": [
@@ -1834,7 +2422,7 @@
                 ]
             },  
             {
-                "label": "Funkmast",
+                "label": "Funkmast, Antenne",
                 "layers": [
                     {
                         "geomType": "Point",
@@ -1848,21 +2436,6 @@
                     }
                 ]
             },  
-            {
-                "label": "Antenne",
-                "layers": [
-                    {
-                        "geomType": "Point",
-                        "filter": [
-                            "Antenne"
-                        ],
-                        "properties": {
-                            "klasse": "Antenne"
-                        },
-                        "coordinates": [1, -0.0003]
-                    }
-                ]
-            }, 
             {
                 "label": "Radioteleskop",
                 "layers": [
@@ -1932,7 +2505,7 @@
                         "properties": {
                             "klasse": "Bake"
                         },
-                        "coordinates": [1, -0.0002]
+                        "coordinates": [1, -0.00015]
                     }
                 ]
             },  
@@ -1979,6 +2552,77 @@
                 ]
             },
             {
+                "label": "Fähre, Auto",
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "Symbol_VerLA_FaehreAuto"
+                        ],
+                        "properties": {
+                            "klasse": "Autofährverkehr"
+                        }
+                    }
+                ]
+            },
+            {
+                "label": "Fähre, Eisenbahn",
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "Symbol_VerLA_FaehreEisenbahn"
+                        ],
+                        "properties": {
+                            "klasse": "Eisenbahnverkehr"
+                        }
+                    }
+                ]
+            },
+            {
+                "label": "Fähre, Personen",
+                "layers": [
+                    {
+                        "geomType": "Line",
+                        "filter": [
+                            "Symbol_VerLA_FaehrePersonen"
+                        ],
+                        "properties": {
+                            "klasse": "Personenfährverkehr"
+                        }
+                    }
+                ]
+            },                           
+            {
+                "label": "Schiffshebewerk, Schleuse",
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "SymbolName_NamPA_Schleuse_Schiffshebewerk_BwkF"
+                        ],
+                        "properties": {
+                            "klasse": "Schleuse",
+                            "art": "Schiffshebewerk"
+                        }
+                    }
+                ]
+            },  
+            {
+                "label": "Sicherheitstor",
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "SymbolName_BwkPA_Sicherheitstor"
+                        ],
+                        "properties": {
+                            "klasse": "Sicherheitstor"
+                        }
+                    }
+                ]
+            },   
+            {
                 "label": "Bildstock, Gipfelkreuz",
                 "layers": [
                     {
@@ -1993,6 +2637,20 @@
                     }
                 ]
             },
+            {
+                "label": "Schutzhütte",
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "Symbol_GebPA_Huette"
+                        ],
+                        "properties": {
+                            "klasse": "Schutzhütte"
+                        }
+                    }
+                ]
+            }, 
             {
                 "label": "Kilometerstein",
                 "layers": [
@@ -2021,7 +2679,45 @@
                         "coordinates": [1, -0.0002]
                     }
                 ]
-            }      
+            },
+            {
+                "label": "Dolmen",
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "Symbol_HisPA_Grosssteingrab_Dolmen"
+                        ],
+                        "properties": {
+                            "klasse": "Großsteingrab (Dolmen, Hünenbett)"
+                        },
+                        "coordinates": [1, -0.0002]
+                    }
+                ]
+            },   
+            {
+                "label": "Steinmal",
+                "layers": [
+                    {
+                        "geomType": "Point",
+                        "filter": [
+                            "Symbol_HisPA_Steinmal"
+                        ],
+                        "properties": {
+                            "klasse": "Steinmal"
+                        },
+                        "coordinates": [1, -0.0002]
+                    }
+                ]
+            },   
+            {
+                "label": "Zoo",
+                "image": "img/Zoo.svg"
+            },   
+            {
+                "label": "Golfplatz",
+                "image": "img/Golfplatz.svg"
+            }                  
         ]
     }
 ]
