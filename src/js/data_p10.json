@@ -1,4 +1,4 @@
-[          
+[         
     {
         "group": "Siedlung",
         "overlay": {
@@ -12,7 +12,7 @@
                 }                  
             ]
         },
-        "items": [            
+        "items": [                       
             {
                 "label": "Name einer Stadt, Gemeinde",
                 "zoom": 10,
@@ -120,7 +120,7 @@
             },
             {
                 "label": "Tagebau, Bergbau",
-                "center": [0.9995, -0.00025],
+                "center": [0.9995, -0.0039],
                 "layers": [
                     {
                         "geomType": "Polygon",
@@ -775,10 +775,10 @@
                 }                  
             ]
         },
-        "items": [                               
+        "items": [                                      
             {
                 "label": "Wald",
-                "center": [1, -0.0003],
+                "center": [1.0004, 0],
                 "layers": [
                     {
                         "geomType": "Polygon",
@@ -797,7 +797,7 @@
             },
             {
                 "label": "Gehölz",
-                "center": [1, -0.0003],
+                "center": [1.0004, 0],
                 "layers": [
                     {
                         "geomType": "Polygon",
@@ -844,7 +844,7 @@
             },
             {
                 "label": "Gartenland",
-                "center": [1.0003, -0.0002],
+                "center": [1.0002, 0],
                 "layers": [
                     {
                         "geomType": "Polygon",
@@ -862,7 +862,7 @@
             },
             {
                 "label": "Hopfen",
-                "center": [0.9999, -0.0001],                
+                "center": [0.9998, 0.0002],                
                 "layers": [
                     {
                         "geomType": "Polygon",
@@ -914,7 +914,7 @@
             },
             {
                 "label": "Streuobstwiese",
-                "center": [1, -0.0002],                
+                "center": [1.0004, 0],                
                 "layers": [
                     {
                         "geomType": "Polygon",
@@ -933,7 +933,7 @@
             },                                               
             {
                 "label": "Heide",
-                "center": [1, -0.0002],
+                "center": [1.0004, 0],
                 "layers": [
                     {
                         "geomType": "Polygon",
@@ -951,7 +951,7 @@
             },
             {
                 "label": "Moor",
-                "center": [0.999, 0.0002],
+                "center": [0.9998, 0.0005],
                 "layers": [
                     {
                         "geomType": "Polygon",
@@ -969,7 +969,7 @@
             },
             {
                 "label": "Sumpf, nasser Boden",
-                "center": [0.9995, -0.0003],
+                "center": [0.9993, -0.0002],
                 "layers": [
                     {
                         "geomType": "Polygon",
@@ -987,7 +987,7 @@
             },          
             {
                 "label": "Schilf, Röhricht",
-                "center": [0.9984, -0.0002],
+                "center": [0.9977, 0],
                 "layers": [
                     {
                         "geomType": "Polygon",
@@ -1020,7 +1020,7 @@
             },
             {
                 "label": "Torf",
-                "center": [1, -0.0002],
+                "center": [1.0004, 0],
                 "layers": [
                     {
                         "geomType": "Polygon",
@@ -1036,7 +1036,7 @@
                         ]
                     }
                 ]
-            },                                    
+            }, 
             {
                 "label": "Laub-, Nadelbaum",
                 "zoom": 16,
@@ -1202,7 +1202,7 @@
                 ]
             }
         ]
-    },      
+    },       
     {
         "group": "Gewässer",
         "overlay": {
@@ -1335,7 +1335,7 @@
                     {
                         "geomType": "Point",
                         "filter": [
-                            "Symbol_GewPA_Quelle"
+                            "Quelle"
                         ],
                         "properties": {
                             "klasse": "Quelle"
@@ -1922,7 +1922,7 @@
                     {
                         "geomType": "Point",
                         "filter": [
-                            "Symbol_HisPA_WallGrabenSchanze_Grabhuegel"
+                            "Grabhuegel"
                         ],
                         "properties": {
                             "klasse": "Befestigung (Burgruine)"
@@ -1951,7 +1951,7 @@
                     {
                         "geomType": "Point",
                         "filter": [
-                            "Wachturm"
+                            "Wachtturm"
                         ],
                         "properties": {
                             "klasse": "Wachturm (römisch), Warte"
@@ -2296,7 +2296,7 @@
                     {
                         "geomType": "Point",
                         "filter": [
-                            "Symbol_BwkPA_Schornstein"
+                            "Schornstein"
                         ],
                         "properties": {
                             "klasse": "Schornstein, Schlot, Esse"
@@ -2686,7 +2686,7 @@
                     {
                         "geomType": "Point",
                         "filter": [
-                            "Symbol_HisPA_Grosssteingrab_Dolmen"
+                            "Grosssteingrab"
                         ],
                         "properties": {
                             "klasse": "Großsteingrab (Dolmen, Hünenbett)"
@@ -2701,7 +2701,7 @@
                     {
                         "geomType": "Point",
                         "filter": [
-                            "Symbol_HisPA_Steinmal"
+                            "Steinmal"
                         ],
                         "properties": {
                             "klasse": "Steinmal"

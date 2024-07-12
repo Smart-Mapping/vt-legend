@@ -1,3 +1,8 @@
+## v1.5.1 (2024-07-12)
+### Improvements and changes
+* Reduce the height of legend elements.
+* Adapt the configuration of the P10 legend to basemap.de P10 style version 1.3.0
+
 ## v1.5.0 (2024-03-14)
 ### Improvements and changes
 * Add configuration for SVG instead of map images.
