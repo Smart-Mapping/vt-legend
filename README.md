@@ -4,7 +4,7 @@ This web application creates legend images for vector tile styles, based on the 
 
 ![VT Map Editor App](docs/images/legend.png)
 
-See full examples of legend images for a [color map](https://basemap.de/legende-web-raster-farbe/) and a [grayscale map](https://basemap.de/legende-web-raster-farbe/), created with this web application for [basemap.de](https://basemap.de).
+See full examples of legend images for a [color map](https://basemap.de/legende-web-raster-farbe/) and a [grayscale map](https://basemap.de/legende-web-raster-grau/), created with this web application for [basemap.de](https://basemap.de).
 
 ## Getting Started
 
