@@ -1,3 +1,10 @@
+## v1.5.2 (2025-02-06)
+
+### Maintenance
+
+* Update dependencies
+
+
 ## v1.5.1 (2024-07-12)
 ### Improvements and changes
 * Reduce the height of legend elements.
