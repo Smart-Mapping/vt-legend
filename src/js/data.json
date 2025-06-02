@@ -48,7 +48,7 @@
                             "SiedlungF_Siedlung"
                         ],
                         "properties": {
-                            "klasse": "Siedlung"
+                            "klasse": "Wohnbaufläche"
                         }
                     },
                     {
@@ -85,10 +85,10 @@
                     {
                         "geomType": "Polygon",
                         "filter": [
-                            "Industrie"
+                            "SiedlungF_Industrie_und_Gewerbe"
                         ],
                         "properties": {
-                            "klasse": "Industrie- und Gewerbefläche"
+                            "klasse": "Industrie und Gewerbe"
                         }
                     },
                     {
@@ -142,7 +142,7 @@
                     {
                         "geomType": "Polygon",
                         "filter": [
-                            "SportfreizeitundErholung"
+                            "SportFreizeitundErholung"
                         ],
                         "properties": {
                             "klasse": "Sport- Freizeit- und Erholungsfläche"
@@ -159,7 +159,7 @@
                             "Stadion"
                         ],
                         "properties": {
-                            "klasse": "Stadion"
+                            "klasse": "Spielfeld"
                         }
                     }
                 ]
@@ -558,7 +558,7 @@
                     {
                         "geomType": "Point",
                         "filter": [
-                            "S_Bahn"
+                            "Symbol_VerkehrP_S_Bahn"
                         ],
                         "properties": {
                             "klasse": "S-Bahn-Hp"
@@ -581,7 +581,7 @@
                     {
                         "geomType": "Point",
                         "filter": [
-                            "U_Bahn"
+                            "Symbol_VerkehrP_U_Bahn"
                         ],
                         "properties": {
                             "klasse": "U-Bahn-Hp"
@@ -635,7 +635,7 @@
                             "Flughafen"
                         ],
                         "properties": {
-                            "klasse": "Flughafen"
+                            "klasse": "Internationaler Flughafen"
                         }
                     }
                 ]
@@ -664,8 +664,7 @@
                         ],
                         "properties": {
                             "klasse": "Hubschrauberlandeplatz"
-                        },
-                        "coordinates": [1, -0.0004]
+                        }
                     }
                 ]
             },     
@@ -771,7 +770,7 @@
                             "Gartenland"
                         ],
                         "properties": {
-                            "klasse": "Gartenland"
+                            "klasse": "Gartenbauland"
                         }
                     }
                 ]
