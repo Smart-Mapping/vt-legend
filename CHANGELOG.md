@@ -1,3 +1,7 @@
+## v1.5.3 (2025-09-09)
+### Improvements and changes
+* Adapt the configuration of the basemap.de Web Raster legend to style version 4.1.0
+
 ## v1.5.2 (2025-02-06)
 ### Maintenance
 * Update dependencies
