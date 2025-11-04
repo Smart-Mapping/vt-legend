@@ -176,7 +176,7 @@
                             "SdlFF_SportfreizeitundErholung"
                         ],
                         "properties": {
-                            "klasse": "Sport- Freizeit- und Erholungsfläche"
+                            "klasse": "Sport-, Freizeit-, und Erholungsfläche"
                         }
                     }
                 ]
@@ -217,7 +217,7 @@
                         "geomType": "Polygon",
                         "filter": [
                             "SdlFF_Friedhof",
-                            "\\bSdlFM_Friedhof_klein\\b"
+                            "\\bSdlFM_Friedhof_klein_P10\\b"
                         ],
                         "properties": {
                             "klasse": "Friedhof"
@@ -1980,7 +1980,7 @@
                 ]
             },
             {
-                "label": "Schloss-, Burg-, Stadtturm",
+                "label": "Kirch-, Schloss-, Burg-, Stadtturm",
                 "layers": [
                     {
                         "geomType": "Point",
@@ -1989,21 +1989,6 @@
                         ],
                         "properties": {
                             "klasse": "Schloss-, Burgturm"
-                        },
-                        "coordinates": [1, -0.0002]
-                    }
-                ]
-            }, 
-            {
-                "label": "Kirchturm",
-                "layers": [
-                    {
-                        "geomType": "Point",
-                        "filter": [
-                            "Kirchturm"
-                        ],
-                        "properties": {
-                            "klasse": "Kirchturm, Glockenturm"
                         }
                     }
                 ]
