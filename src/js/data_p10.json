@@ -1,4 +1,4 @@
-[         
+[        
     {
         "group": "Siedlung",
         "overlay": {
@@ -12,7 +12,7 @@
                 }                  
             ]
         },
-        "items": [                       
+        "items": [                  
             {
                 "label": "Name einer Stadt, Gemeinde",
                 "zoom": 10,
@@ -59,7 +59,7 @@
                             "\\bSdlFF_Siedlung\\b"
                         ],
                         "properties": {
-                            "klasse": "Siedlung"
+                            "klasse": "Wohnbaufläche"
                         }
                     },
                     {
@@ -96,10 +96,10 @@
                     {
                         "geomType": "Polygon",
                         "filter": [
-                            "Industrie"
+                            "SdlFF_IndustrieUndGewerbe"
                         ],
                         "properties": {
-                            "klasse": "Industrie- und Gewerbefläche"
+                            "klasse": "Industrie und Gewerbe"
                         }
                     },
                     {
@@ -176,7 +176,7 @@
                             "SdlFF_SportfreizeitundErholung"
                         ],
                         "properties": {
-                            "klasse": "Sport-, Freizeit-, und Erholungsfläche"
+                            "klasse": "Sport- Freizeit- und Erholungsfläche"
                         }
                     }
                 ]
@@ -187,15 +187,15 @@
                     {
                         "geomType": "Polygon",
                         "filter": [
-                            "BwkFF_Stadion",
-                            "BwkFK_Stadion"
+                            "BwkFF_StadionNichtUeberdacht",
+                            "BwkFK_StadionNichtUeberdacht"
                         ],
                         "properties": {
-                            "klasse": "Stadion"
+                            "klasse": "Stadion, nicht überdacht"
                         }
                     }
                 ]
-            },                          
+            },                      
             {
                 "label": "Schwimmbecken",
                 "layers": [
@@ -216,7 +216,8 @@
                     {
                         "geomType": "Polygon",
                         "filter": [
-                            "Friedhof"
+                            "SdlFF_Friedhof",
+                            "\\bSdlFM_Friedhof_klein\\b"
                         ],
                         "properties": {
                             "klasse": "Friedhof"
@@ -535,7 +536,7 @@
                     {
                         "geomType": "Line",
                         "filter": [
-                            "\\bTunnelLev2_StrLL_Gemeindestr\\b"
+                            "\\bTunnel_StrLL_Gemeindestr\\b"
                         ],
                         "properties": {
                             "klasse": "Gemeindestraße",
@@ -674,8 +675,6 @@
                 "label": "Flugplatz",
                 "layers": [
                     {
-           
-
                         "geomType": "Point",
                         "filter": [
                             "\\Name_NamPA_Flugplatz_FluF_bis2\\b"
@@ -768,7 +767,7 @@
             "layers": [
                 {
                     "geomType": "Raster",
-                    "tilesUrl": "https://<host>/wms?tiled=true&bbox=1035874.6073207073,6886670.500381239,1037097.5997732729,6887893.492833804&service=WMS&version=1.3.0&request=GetMap&layers=de_basemapde_web_raster_combshade&styles=&crs=EPSG:3857&width=256&height=256&format=image/png&transparent=true",
+                    "tilesUrl": "https://sgx.geodatenzentrum.de/wms_basemapde_schummerung?tiled=true&bbox=1035874.6073207073,6886670.500381239,1037097.5997732729,6887893.492833804&service=WMS&version=1.3.0&request=GetMap&layers=de_basemapde_web_raster_combshade&styles=&crs=EPSG:3857&width=256&height=256&format=image/png&transparent=true",
                     "filter": [
                         "\\bSchummerung_Comb\\b"
                     ]
@@ -783,11 +782,11 @@
                     {
                         "geomType": "Polygon",
                         "filter": [
-                            "VegFM_Nadelholz",
-                            "VegFF_Nadelholz"
+                            "VegFF_Wald",
+                            "VegFM_Wald"
                         ],
                         "properties": {
-                            "klasse": "Nadelholz"
+                            "klasse": "Wald"
                         },
                         "coordinates": [
                             [[[0.99, -0.005], [0.99, 0.005], [1.01, 0.005], [1.01, -0.005], [0.99, -0.005]]]
@@ -802,8 +801,8 @@
                     {
                         "geomType": "Polygon",
                         "filter": [
-                            "VegFM_Gehoelz",
-                            "VegFF_Gehoelz"
+                            "\\bVegFM_Gehoelz\\b",
+                            "\\bVegFF_Gehoelz\\b"
                         ],
                         "properties": {
                             "klasse": "Gehölz"
@@ -820,7 +819,8 @@
                     {
                         "geomType": "Polygon",
                         "filter": [
-                            "Baumschule"
+                            "\\bVegFF_Baumschule\\b",
+                            "\\bVegFM_Baumschule\\b"
                         ],
                         "properties": {
                             "klasse": "Baumschule"
@@ -852,7 +852,7 @@
                             "Gartenland"
                         ],
                         "properties": {
-                            "klasse": "Gartenland"
+                            "klasse": "Gartenbauland"
                         },
                         "coordinates": [
                             [[[0.99, -0.005], [0.99, 0.005], [1.01, 0.005], [1.01, -0.005], [0.99, -0.005]]]
@@ -867,8 +867,8 @@
                     {
                         "geomType": "Polygon",
                         "filter": [
-                            "VegFF_Hopfen",
-                            "VegFM_Hopfen"
+                            "\\bVegFF_Hopfen\\b",
+                            "\\bVegFM_Hopfen\\b"
                         ],
                         "properties": {
                             "klasse": "Hopfen"
@@ -880,16 +880,16 @@
                 ]
             },    
             {
-                "label": "Weingarten",
+                "label": "Rebfläche",
                 "layers": [
                     {
                         "geomType": "Polygon",
                         "filter": [
-                            "VegFF_Weingarten",
-                            "VegFM_Weingarten"
+                            "\\bVegFF_Rebflaeche\\b",
+                            "\\bVegFM_Rebflaeche\\b"
                         ],
                         "properties": {
-                            "klasse": "Weingarten"
+                            "klasse": "Rebfläche"
                         }
                     }
                 ]
@@ -900,11 +900,11 @@
                     {
                         "geomType": "Polygon",
                         "filter": [
-                            "VegFF_Obstplantage",
-                            "VegFM_Obstplantage"
+                            "\\bVegFF_Obstplantage\\b",
+                            "\\bVegFM_Obstplantage\\b"
                         ],
                         "properties": {
-                            "klasse": "Obstplantage"
+                            "klasse": "Obst- und Nussplantage"
                         },
                         "coordinates": [
                             [[[0.99, -0.005], [0.99, 0.005], [1.01, 0.005], [1.01, -0.005], [0.99, -0.005]]]
@@ -919,8 +919,8 @@
                     {
                         "geomType": "Polygon",
                         "filter": [
-                            "VegFF_Streuobstwiese",
-                            "VegFM_Streuobstwiese"
+                            "\\bVegFF_Streuobstwiese\\b",
+                            "\\bVegFM_Streuobstwiese\\b"
                         ],
                         "properties": {
                             "klasse": "Streuobstwiese"
@@ -938,7 +938,8 @@
                     {
                         "geomType": "Polygon",
                         "filter": [
-                            "Heide"
+                            "\\bVegFF_Heide\\b",
+                            "\\bVegFM_Heide\\b"
                         ],
                         "properties": {
                             "klasse": "Heide"
@@ -956,7 +957,8 @@
                     {
                         "geomType": "Polygon",
                         "filter": [
-                            "Moor"
+                            "\\bVegFF_Moor\\b",
+                            "\\bVegFM_Moor\\b"
                         ],
                         "properties": {
                             "klasse": "Moor"
@@ -974,7 +976,8 @@
                     {
                         "geomType": "Polygon",
                         "filter": [
-                            "Sumpf"
+                            "\\bVegFF_Sumpf\\b",
+                            "\\bVegFM_Sumpf\\b"
                         ],
                         "properties": {
                             "klasse": "Sumpf"
@@ -992,7 +995,7 @@
                     {
                         "geomType": "Polygon",
                         "filter": [
-                            "VegFM_SchilfRoehricht"
+                            "\\bVegFM_SchilfRoehricht\\b"
                         ],
                         "properties": {
                             "klasse": "Röhricht, Schilf"
@@ -1025,7 +1028,8 @@
                     {
                         "geomType": "Polygon",
                         "filter": [
-                            "Torf"
+                            "\\bSdlFF_TagebauGrubeSteinbruch_Torf\\b",
+                            "\\bSdlFM_TagebauGrubeSteinbruch_Torf\\b"
                         ],
                         "properties": {
                             "klasse": "Tagebau, Grube, Steinbruch",
@@ -1145,8 +1149,8 @@
                     {
                         "geomType": "Polygon",
                         "filter": [
-                            "VegFF_Fels",
-                            "VegFM_Fels"
+                            "\\bVegFF_Fels\\b",
+                            "\\bVegFM_Fels\\b"
                         ],
                         "properties": {
                             "klasse": "Fels"
@@ -1163,8 +1167,8 @@
                     {
                         "geomType": "Polygon",
                         "filter": [
-                            "VegFF_Geroell",
-                            "VegFM_Geroell"
+                            "\\bVegFF_Geroell\\b",
+                            "\\bVegFM_Geroell\\b"
                         ],
                         "properties": {
                             "klasse": "Geröll"
@@ -1202,14 +1206,14 @@
                 ]
             }
         ]
-    },       
+    },        
     {
         "group": "Gewässer",
         "overlay": {
             "layers": [
                 {
                     "geomType": "raster",
-                    "tilesUrl": "https://<host>/wms?tiled=true&bbox=1035874.6073207073,6886670.500381239,1037097.5997732729,6887893.492833804&service=WMS&version=1.3.0&request=GetMap&layers=de_basemapde_web_raster_combshade&styles=&crs=EPSG:3857&width=256&height=256&format=image/png&transparent=true",
+                    "tilesUrl": "https://sgx.geodatenzentrum.de/wms_basemapde_schummerung?tiled=true&bbox=1035874.6073207073,6886670.500381239,1037097.5997732729,6887893.492833804&service=WMS&version=1.3.0&request=GetMap&layers=de_basemapde_web_raster_combshade&styles=&crs=EPSG:3857&width=256&height=256&format=image/png&transparent=true",
                     "filter": [
                         "\\bSchummerung_Comb\\b"
                     ]
@@ -1290,7 +1294,7 @@
                     {
                         "geomType": "Polygon",
                         "filter": [
-                            "Stromschnelle"
+                            "\\bGewFM_Stromschnelle\\b"
                         ],
                         "properties": {
                             "klasse": "Stromschnelle"
@@ -1606,7 +1610,7 @@
                             "GrzLL_Kreisgrenze"
                         ],
                         "properties": {
-                            "klasse": "Grenze des Kreises/Region"
+                            "klasse": "Grenze des Kreises / Kreisfreien Stadt / Region"
                         }
                     }
                 ]
@@ -1867,7 +1871,7 @@
                             "Raststaette"
                         ],
                         "properties": {
-                            "klasse": "Raststätte",
+                            "klasse": "Raststätte, Autohof",
                             "flaeche": 0.7
                         }
                     }
@@ -1897,7 +1901,7 @@
                             "Schwimmbad"
                         ],
                         "properties": {
-                            "klasse": "Schwimmbad, Freibad"
+                            "klasse": "Schwimmen"
                         }
                     }
                 ]
@@ -2299,7 +2303,7 @@
                             "Schornstein"
                         ],
                         "properties": {
-                            "klasse": "Schornstein, Schlot, Esse"
+                            "klasse": "Schornstein"
                         },
                         "coordinates": [1, -0.0002]
                     }
@@ -2398,7 +2402,7 @@
                     {
                         "geomType": "Point",
                         "filter": [
-                            "Wassserturm"
+                            "Symbol_SymPA_Wasserturm_BwkF"
                         ],
                         "properties": {
                             "klasse": "Wasserturm"
