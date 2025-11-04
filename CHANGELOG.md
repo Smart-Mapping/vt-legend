@@ -1,3 +1,7 @@
+## v1.5.4 (2025-11-04)
+### Improvements and changes
+* Adapt the configuration of the P10 legend to basemap.de P10 style version 2.1.2
+
 ## v1.5.3 (2025-09-09)
 ### Improvements and changes
 * Adapt the configuration of the basemap.de Web Raster legend to style version 4.1.0
